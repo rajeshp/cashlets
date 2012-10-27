@@ -87,4 +87,22 @@ public class SocialUser implements java.io.Serializable {
      * A boolean indicating if the user has validated his email adddress (available when authMethod is USER_PASSWORD)
      */
     public boolean isEmailVerified;
+
+
+/*  Custom Added fields 
+ * 
+ * 
+ *
+ */
+ 
+    public String phone;
+    
+    public String city;
+    
+    // 0 for Male, 1 for female
+    public String gender;
+    
+    
+ 
+
 }

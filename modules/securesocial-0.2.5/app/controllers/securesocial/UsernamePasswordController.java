@@ -66,8 +66,19 @@ public class UsernamePasswordController extends Controller
     public static void createAccount(@Required(message = "securesocial.required") String userName,
                                      @Required String displayName,
                                      @Required @Email(message = "securesocial.invalidEmail") String email,
+                                     String phone,
                                      @Required String password,
-                                     @Required @Equals(message = "securesocial.passwordsMustMatch", value = "password") String password2) {
+                                     @Required @Equals(message = "securesocial.passwordsMustMatch", value = "password") String password2,
+                                     String city, String gender
+                                     
+    		) {
+    	
+    	
+    	System.out.println("************* Inside SecureSocial CreateAccount with Custom data");
+    	
+        System.out.println("New User custom fields phone:"+phone+ " city="+city+" Gender="+gender);
+    	
+    	
         if ( validation.hasErrors() ) {
             tryAgain(userName, displayName, email);
         }
@@ -88,6 +99,11 @@ public class UsernamePasswordController extends Controller
         // the user will remain inactive until the email verification is done.
         user.isEmailVerified = false;
         user.authMethod = AuthenticationMethod.USER_PASSWORD;
+        
+        user.city=city;
+        user.phone=phone;
+        user.gender=gender;
+        
 
         try {
             UserService.save(user);

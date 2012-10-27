@@ -28,6 +28,8 @@ public class User extends Model{
   public  String lastName;
   public  String phone;
   public  String city;
+  //0 for Male and 1 for female
+  public  String gender;
   public  String photoID;
   public  String registeredDate;
     /**

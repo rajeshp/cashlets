@@ -7,10 +7,10 @@
 	
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:\Users\te162141\Developer\play-framework\play-1.2.4\framework\play-1.2.4.jar" sourcepath="C:/users/te162141/developer/play-framework/play-1.2.4/framework/src" />
-	<classpathentry kind="lib" path="C:\Users\te162141\Developer\cashlets\cashlets1.0\modules\securesocial-0.2.5\lib\play-securesocial.jar"/>
-	<classpathentry kind="lib" path="C:\Users\te162141\Developer\cashlets\cashlets1.0\modules\morphia-1.2.10\lib\mongo-2.7.3.jar"/>
-	<classpathentry kind="lib" path="C:\Users\te162141\Developer\cashlets\cashlets1.0\modules\morphia-1.2.10\lib\morphia-1.00-20110403.jar"/>
-	<classpathentry kind="lib" path="C:\Users\te162141\Developer\cashlets\cashlets1.0\modules\morphia-1.2.10\lib\play-morphia.jar"/>
+	<classpathentry kind="lib" path="C:\Users\te162141\Documents\GitHub\cashlets\modules\securesocial-0.2.5\lib\play-securesocial.jar"/>
+	<classpathentry kind="lib" path="C:\Users\te162141\Documents\GitHub\cashlets\modules\morphia-1.2.10\lib\mongo-2.7.3.jar"/>
+	<classpathentry kind="lib" path="C:\Users\te162141\Documents\GitHub\cashlets\modules\morphia-1.2.10\lib\morphia-1.00-20110403.jar"/>
+	<classpathentry kind="lib" path="C:\Users\te162141\Documents\GitHub\cashlets\modules\morphia-1.2.10\lib\play-morphia.jar"/>
 	<classpathentry kind="lib" path="C:\Users\te162141\Developer\play-framework\play-1.2.4\framework\lib\activation-1.1.1.jar"/>
 	<classpathentry kind="lib" path="C:\Users\te162141\Developer\play-framework\play-1.2.4\framework\lib\antlr-2.7.6.jar"/>
 	<classpathentry kind="lib" path="C:\Users\te162141\Developer\play-framework\play-1.2.4\framework\lib\asm-all-3.3.1.jar"/>

@@ -52,6 +52,17 @@
                         </span>
                     </div>
                 </div>
+				
+				<div class="clearfix #{ifError 'displayName'} error #{/ifError}">
+                    <label for="phone">&{'Phone'}</label>
+                    <div class="input">
+                        <input id="phone" class="large" name="phone" value="${flash.phone}"/>
+                        #{ifError 'displayName'}
+                        <span class="help-inline">&{'securesocial.required'}</span>
+                        #{/ifError}
+                    </div>
+                </div>
+				
 
                 <div class="clearfix #{ifError 'password'} error #{/ifError}">
                     <label for="password">&{'securesocial.password'}</label>
@@ -73,6 +84,34 @@
                     </div>
                 </div>
 
+				
+				
+				<div class="clearfix #{ifError 'city'} error #{/ifError}">
+                    <label for="city">&{'City'}</label>
+                    <div class="input">
+                        <input id="city" class="large" name="city" value="${flash.displayName}"/>
+                        #{ifError 'city'}
+                        <span class="help-inline">&{'securesocial.required'}</span>
+                        #{/ifError}
+                    </div>
+                </div>
+				
+				<div class="clearfix #{ifError 'gender'} error #{/ifError}">
+                    <label for="Gender">&{'Gender'}</label>
+										
+                    <div class="input">
+                    <!--    <input id="Gender" class="large" name="Gender" value="${flash.Gender}"/> -->
+						<select id="gender" name="gender">
+						<option value="Male" > Male </option>
+						<option value="Female" > Female </option>
+						</select>
+
+					#{ifError 'gender'}
+                        <span class="help-inline">&{'securesocial.required'}</span>
+                        #{/ifError}
+                    </div>
+                </div>
+				
                 <div class="actions">
                     <input type="submit" value="Create Account" class="btn primary">
                     <a href="@{securesocial.SecureSocial.login()}" class="btn">&{'securesocial.cancel'}</input></a>

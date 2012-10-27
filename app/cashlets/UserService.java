@@ -71,7 +71,14 @@ public class UserService implements UserServiceDelegate {
 		user2.lastAccess = suser.lastAccess;
 		user2.authMethod=suser.authMethod;
 		user2.isEmailVerified=suser.isEmailVerified;
+		
+		user2.city = suser.city;
+		user2.phone= suser.phone;
+		user2.gender = suser.gender;
+		
+		
 		//save user object
+		
 		user2.save();
 		
 		
