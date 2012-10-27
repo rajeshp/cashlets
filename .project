@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>cashlets</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.playframework.playclipse.playNature</nature>
+	</natures>
+	<linkedResources><link><name>securesocial-0.2.5</name><type>2</type><location>C:/Users/te162141/Developer/cashlets/cashlets1.0/modules/securesocial-0.2.5/app</location></link>
+<link><name>conf/securesocial-0.2.5</name><type>2</type><location>C:/Users/te162141/Developer/cashlets/cashlets1.0/modules/securesocial-0.2.5/conf</location></link>
+<link><name>public/securesocial-0.2.5</name><type>2</type><location>C:/Users/te162141/Developer/cashlets/cashlets1.0/modules/securesocial-0.2.5/public</location></link>
+<link><name>morphia-1.2.10</name><type>2</type><location>C:/Users/te162141/Developer/cashlets/cashlets1.0/modules/morphia-1.2.10/app</location></link>
+<link><name>conf/morphia-1.2.10</name><type>2</type><location>C:/Users/te162141/Developer/cashlets/cashlets1.0/modules/morphia-1.2.10/conf</location></link>
+</linkedResources>
+</projectDescription>
