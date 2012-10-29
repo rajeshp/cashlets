@@ -4,6 +4,7 @@ import java.util.Date;
 
 import play.libs.OAuth;
 import securesocial.provider.AuthenticationMethod;
+import securesocial.provider.SocialUser;
 import securesocial.provider.UserId;
 
 import com.google.code.morphia.annotations.Entity;
@@ -23,6 +24,9 @@ import com.google.code.morphia.annotations.Id;
 public class User extends Model{
    @Id
   public  String userid;
+  public SocialUser details;
+  
+  /*public  String username;
   public  String password;
   public  String firstName;
   public  String lastName;
@@ -32,29 +36,29 @@ public class User extends Model{
   public  String gender;
   public  String photoID;
   public  String registeredDate;
-    /**
+    *//**
      * The user's email
-     */
+     *//*
     public String email;
-    /**
+    *//**
      * The time of the last login.  This is set by the SecureSocial controller.
-     */
+     *//*
     public Date lastAccess;
 
-    /**
+    *//**
      * The method that was used to authenticate the user.
-     */
+     *//*
     public AuthenticationMethod authMethod;
 
     
-    /**
+    *//**
      * A boolean indicating if the user has validated his email adddress (available when authMethod is USER_PASSWORD)
-     */
+     *//*
     public boolean isEmailVerified;
-    
+*/    
     
 
-
+   
 
 
 

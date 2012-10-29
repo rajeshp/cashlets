@@ -17,8 +17,15 @@
 package securesocial.provider;
 
 import play.libs.OAuth;
+import play.modules.morphia.Model;
 
 import java.util.Date;
+
+import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Id;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 
 /**
  * A class representing a conected user and its authentication details.
@@ -27,12 +34,17 @@ public class SocialUser implements java.io.Serializable {
     /**
      * The user id
      */
+	
     public UserId id;
 
     /**
      * The user full name.
      */
-    public String displayName;
+    //public String displayName;
+    
+    public String firstName;
+    
+    public String lastName;
 
     /**
      * The user's email
@@ -102,7 +114,14 @@ public class SocialUser implements java.io.Serializable {
     // 0 for Male, 1 for female
     public String gender;
     
+    public Date dob;
     
- 
+    
+    @Override
+    public String toString()
+    {
+    	Gson jsonObj = new Gson();
+    	return jsonObj.toJson(this);
+    }
 
 }

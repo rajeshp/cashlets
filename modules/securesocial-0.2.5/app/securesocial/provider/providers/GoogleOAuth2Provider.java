@@ -147,7 +147,7 @@ public class GoogleOAuth2Provider extends IdentityProvider {
 
 
         user.id.id = me.get(ID).getAsString();
-        user.displayName = me.get(NAME).getAsString();
+        user.firstName= me.get(NAME).getAsString();
         user.avatarUrl = me.get(PICTURE).getAsString();
         user.email = me.get(EMAIL).getAsString();
     }

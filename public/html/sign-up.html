@@ -89,6 +89,7 @@
 </div>
 
 <div class="main-content2">
+<form id="userForm" action="/registerUser" method="POST" >
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-left:100px; width:500px;">
   <tr>
     <td width="22%" class="padd">First Name</td>
@@ -101,7 +102,7 @@
   </tr>
   <tr>
     <td>Email Address</td>
-   <td class="padd"><input name="email" type="text" class="text-field5" /></td>
+   <td class="padd"><input name="email" id="email" type="text" class="text-field5" /></td>
   </tr>
   <tr>
     <td>Password</td>
@@ -124,16 +125,40 @@
   <tr>
     <td>Birthdate</td>
     <td class="padd"><select  class="text-field6" name="day">
-    <option>---</option>
+    %{ for(int i=1;i<31;i++) 
+    out.println("<option> "+i+" &nbsp;</option>");
+    }%
     </select>&nbsp;&nbsp;
     <select name="Month" class="text-field6">
-    <option>---</option>
+       <option val="01">Jan</option>
+		<option val="02">Feb</option>
+		<option val="03">Mar</option>
+		<option val="04">Apr</option>
+		<option val="05">May</option>
+		<option val="06">Jun</option>
+		<option val="07">Jul</option>
+		<option val="08">Aug</option>
+		<option val="09">Sep</option>
+		<option val="10">Oct</option>
+		<option val="11">Nov</option>
+		<option val="12">Dec</option>
     </select>&nbsp;&nbsp;
     <select name="year" class="text-field6">
-    <option>---</option>
+    %{ for(int i=2010;i>=1900;i--) 
+    out.println("<option> "+i+" &nbsp;</option>");
+    }%
     </select>
     </td>
   </tr>
+  
+   <tr>
+    <td>Phone</td>
+    <td class="padd">
+    <input type="text" class="text-field5" name="phone" maxLength="10" />
+    </td>
+  </tr>
+  
+  
   <tr>
     <td>Country</td>
     <td class="padd"><select name="" class="text-field6">
@@ -141,14 +166,18 @@
     </select></td>
   </tr>
   <tr>
-    <td colspan="2"><img src="/public/images/captch.jpg" width="347" height="153" alt="fdsa" /></td>
+    <td colspan="2">
+    <br><br>
+    #{ugot.recaptcha /}
+    
+    </td>
     </tr>
   <tr>
     <td colspan="2" class="padd">By clicking the button below, you agree to the Cashlets Terms of Service and Privacy Policy.</td>
     </tr>
   <tr>
     <td>&nbsp;</td>
-   <td class="padd"> <input type="submit" name="button" id="button" value="Sign Up" class="button22" style="margin-left:300px;" /></td>
+   <td class="padd"> <input type="submit" name="button" id="submit_button" value="Sign Up" class="button22" style="margin-left:300px;" /></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -156,6 +185,7 @@
   </tr>
 </table>
 
+</form>
   </div>
 </div>
 
@@ -168,4 +198,34 @@
 </div>
 </div>
 </body>
+<script type="text/javascript" >
+
+$(document).ready(function() {
+		
+	//	alert('rajesh');
+}
+		)
+
+$('#submit_button').click(function()
+		{
+	
+	var email= $('#email');
+	
+	alert(email);
+	
+	
+	
+	
+	
+		}
+		
+		)
+		
+		function IsEmail(email) {
+		  var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		  return regex.test(email);
+		}
+		
+
+</script>
 </html>

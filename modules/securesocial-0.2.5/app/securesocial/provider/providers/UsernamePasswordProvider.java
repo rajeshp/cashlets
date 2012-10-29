@@ -81,6 +81,9 @@ public class UsernamePasswordProvider extends IdentityProvider
                 flash.error(Messages.get(SECURESOCIAL_ACCOUNT_NOT_ACTIVE));
                 SecureSocial.login();
             }
+        else {
+			System.out.println("**********EMAIL NOT VERIFIED**********");
+		}
 
         if ( user == null || !passwordMatches(Scope.Params.current().get(PASSWORD), user.password)) {
             flash.error(Messages.get(SECURESOCIAL_WRONG_USER_PASS));

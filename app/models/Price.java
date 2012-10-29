@@ -1,6 +1,7 @@
 package models;
 
 import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Id;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,9 +13,10 @@ import com.google.code.morphia.annotations.Entity;
 @Entity
 public class Price extends Model{
 
-    public String priceid;
-    public String price;
-    public String symbol;
+	@Id
+    public String id;
+    public float price;
+    public String symbol="U+20B9";
 
 
 }

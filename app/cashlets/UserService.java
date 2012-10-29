@@ -31,11 +31,21 @@ public class UserService implements UserServiceDelegate {
 		
 //		play.modules.morphia.Model.MorphiaQuery query =  User.find(id.toString()).first();
 		
-		System.out.println("Find user"+id.id);
+		System.out.println("Find user"+id);
 		
-			
+		User user = User.findById(id);				
 		
-		return null;
+		if(user!=null)
+			{
+			log.info("user found : "+id);
+			return user.details;
+			}
+		else {
+			System.out.println("user not found");
+			return null;
+		}
+				
+		
 	}
 
 	@Override
@@ -62,8 +72,10 @@ public class UserService implements UserServiceDelegate {
 		// TODO Auto-generated method stub
 		
 		
-		User user2 = new User();
-		user2.userid = suser.id.toString();
+		User newUser = new User();
+		
+		/*user2.userid = suser.id.toString();
+		user2.username = suser.id.id;
 		user2.password =suser.password;
 		user2.firstName = suser.displayName;
 		user2.registeredDate = new Date().toString();
@@ -71,18 +83,24 @@ public class UserService implements UserServiceDelegate {
 		user2.lastAccess = suser.lastAccess;
 		user2.authMethod=suser.authMethod;
 		user2.isEmailVerified=suser.isEmailVerified;
-		
 		user2.city = suser.city;
 		user2.phone= suser.phone;
 		user2.gender = suser.gender;
+		*/
 		
 		
 		//save user object
 		
-		user2.save();
+		suser.isEmailVerified=true;
+		
+		newUser.userid = suser.id.id;
+		
+		newUser.details=suser;
+		
+		newUser.save();
 		
 		
-		log.info("Saving user id:"+user2.userid);
+		log.info("Saving user id:"+suser.id.id);
 		
 		
 	}

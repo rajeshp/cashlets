@@ -77,6 +77,9 @@ cursor:pointer;
 	margin-left:70px;
 	margin-bottom:20px;
 }
+
+
+
 .sidebar{
 width:265px;
 float:left;	
@@ -156,7 +159,7 @@ ul.menu2 li a:hover{
 	color: #F33;
 }
 .main-content{
-	float:right;
+	float:left;
 	width:650px;
 	margin-top:30px;
 }

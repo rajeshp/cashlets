@@ -30,4 +30,32 @@ public class UserId implements java.io.Serializable {
      * The provider this user belongs to.
      */
     public ProviderType provider;
+    
+    @Override
+    public String toString()
+    {
+    	return this.id;
+    }
+    
+    
+    @Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		
+    if(obj.getClass().getName().equals("User"))
+    	return equals(obj);
+    else
+    	return false;
+    }
+
+
+    public boolean equals(UserId obj)
+    {
+    	if(this.id.equals(obj.id))
+    		return true;
+    	else {
+			return false;
+		}
+    }
+    
 }

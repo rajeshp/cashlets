@@ -57,7 +57,7 @@ public class FacebookProvider extends OAuth2Provider
         }
         
         user.id.id = me.get(ID).getAsString();
-        user.displayName = me.get(NAME).getAsString();
+        user.firstName= me.get(NAME).getAsString();
 
         //
         // Starting October 2012 the picture field will become a json object.

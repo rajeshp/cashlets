@@ -5,17 +5,17 @@
 # Home page
 
 *       /auth                                   module:securesocial
-GET     /                                       staticFile:/public/html/index.html
+GET     /                                       Router.indexPage
 GET     /{page}.html                            Router.route
 GET     /login                                  securesocial.SecureSocial.login
 
-POST   /addService                               Application.AddService
+POST    /addService                               ServiceController.AddService
 
-GET    /registerUser                            UserController.registerUser
+POST     /registerUser                            UserController.registerUser
 
 #GET     /*.jpg                                  staticFile:/public/images/*.jpg
 
-
+GET    /logout								UserController.logOutUser
 
 
 # Ignore favicon requests

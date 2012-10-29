@@ -15,7 +15,9 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.playframework.playclipse.playNature</nature>
 	</natures>
-	<linkedResources><link><name>securesocial-0.2.5</name><type>2</type><location>C:/Users/te162141/Documents/GitHub/cashlets/modules/securesocial-0.2.5/app</location></link>
+	<linkedResources><link><name>recaptcha</name><type>2</type><location>C:/Users/te162141/Documents/GitHub/cashlets/modules/recaptcha/app</location></link>
+<link><name>conf/recaptcha</name><type>2</type><location>C:/Users/te162141/Documents/GitHub/cashlets/modules/recaptcha/conf</location></link>
+<link><name>securesocial-0.2.5</name><type>2</type><location>C:/Users/te162141/Documents/GitHub/cashlets/modules/securesocial-0.2.5/app</location></link>
 <link><name>conf/securesocial-0.2.5</name><type>2</type><location>C:/Users/te162141/Documents/GitHub/cashlets/modules/securesocial-0.2.5/conf</location></link>
 <link><name>public/securesocial-0.2.5</name><type>2</type><location>C:/Users/te162141/Documents/GitHub/cashlets/modules/securesocial-0.2.5/public</location></link>
 <link><name>morphia-1.2.10</name><type>2</type><location>C:/Users/te162141/Documents/GitHub/cashlets/modules/morphia-1.2.10/app</location></link>

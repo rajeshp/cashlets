@@ -17,6 +17,8 @@
  */
 package controllers.securesocial;
 
+import java.util.Date;
+
 import notifiers.securesocial.Mails;
 import play.Logger;
 import play.data.validation.Email;
@@ -63,37 +65,39 @@ public class UsernamePasswordController extends Controller
      * @param password      The password
      * @param password2     The password verification
      */
-    public static void createAccount(@Required(message = "securesocial.required") String userName,
-                                     @Required String displayName,
+    public static void createAccount(@Required(message = "securesocial.required") String fname,
+                                     @Required String lname,
                                      @Required @Email(message = "securesocial.invalidEmail") String email,
                                      String phone,
                                      @Required String password,
                                      @Required @Equals(message = "securesocial.passwordsMustMatch", value = "password") String password2,
-                                     String city, String gender
+                                     String city, String gender, Date dob
                                      
     		) {
     	
     	
     	System.out.println("************* Inside SecureSocial CreateAccount with Custom data");
     	
-        System.out.println("New User custom fields phone:"+phone+ " city="+city+" Gender="+gender);
+        //System.out.println("New User custom fields phone:"+phone+ " city="+city+" Gender="+gender);
     	
     	
         if ( validation.hasErrors() ) {
-            tryAgain(userName, displayName, email);
+            tryAgain(email, fname+" "+lname, email);
         }
 
         UserId id = new UserId();
-        id.id = userName;
+        id.id = email;
         id.provider = ProviderType.userpass;
 
         if ( UserService.find(id) != null ) {
             validation.addError(USER_NAME, Messages.get(SECURESOCIAL_USER_NAME_TAKEN));
-            tryAgain(userName, displayName, email);
+            tryAgain(email, fname, email);
         }
         SocialUser user = new SocialUser();
         user.id = id;
-        user.displayName = displayName;
+        user.firstName = fname;
+        user.lastName=lname;      
+        
         user.email = email;
         user.password = SecureSocialPasswordHasher.passwordHash(password);
         // the user will remain inactive until the email verification is done.
@@ -110,17 +114,58 @@ public class UsernamePasswordController extends Controller
         } catch ( Throwable e ) {
             Logger.error(e, "Error while invoking UserService.save()");
             flash.error(Messages.get(SECURESOCIAL_ERROR_CREATING_ACCOUNT));
-            tryAgain(userName, displayName, email);
+            tryAgain(email, fname, email);
         }
 
         // create an activation id
         final String uuid = UserService.createActivation(user);
         Mails.sendActivationEmail(user, uuid);
         flash.success(Messages.get(SECURESOCIAL_ACCOUNT_CREATED));
-        final String title = Messages.get(SECURESOCIAL_ACTIVATION_TITLE, user.displayName);
+        final String title = Messages.get(SECURESOCIAL_ACTIVATION_TITLE, user.firstName+" "+user.lastName);
         render(SECURESOCIAL_SECURE_SOCIAL_NOTICE_PAGE_HTML, title);
     }
 
+    
+    
+    
+    public static void createAccount(SocialUser user) 
+    
+    {
+
+
+		System.out.println("************* Inside SecureSocial CreateAccount with Custom data");
+		
+		//System.out.println("New User custom fields phone:"+phone+ " city="+city+" Gender="+gender);
+		
+		
+		/*if ( validation.hasErrors() ) {
+		//tryAgain(userName, displayName, email);
+		}*/
+		
+		
+		
+		
+		try {
+		UserService.save(user);
+		} catch ( Throwable e ) {
+		Logger.error(e, "Error while invoking UserService.save()");
+		flash.error(Messages.get(SECURESOCIAL_ERROR_CREATING_ACCOUNT));
+		//tryAgain(userName, displayName, email);
+		}
+		
+		// create an activation id
+		final String uuid = UserService.createActivation(user);
+		Mails.sendActivationEmail(user, uuid);
+		flash.success(Messages.get(SECURESOCIAL_ACCOUNT_CREATED));
+		final String title = Messages.get(SECURESOCIAL_ACTIVATION_TITLE, user.firstName+" ");
+		render(SECURESOCIAL_SECURE_SOCIAL_NOTICE_PAGE_HTML, title);
+
+    
+    }
+    
+    
+    
+    
     private static void tryAgain(String username, String displayName, String email) {
         flash.put(USER_NAME, username);
         flash.put(DISPLAY_NAME, displayName);

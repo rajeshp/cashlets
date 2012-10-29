@@ -56,7 +56,7 @@ public class WordpressProvider extends OpenIDProvider
     @Override
     protected void fillProfile(SocialUser user, Map<String, Object> authContext) {
         OpenID.UserInfo me = (OpenID.UserInfo) authContext.get(OpenIDProvider.USER_INFO);
-        user.displayName = me.extensions.get(FULLNAME);
+        user.firstName = me.extensions.get(FULLNAME);
         user.email = me.extensions.get(EMAIL);
 
         String hash = gravatarHash(user.email);

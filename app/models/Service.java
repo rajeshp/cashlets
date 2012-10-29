@@ -39,7 +39,7 @@ public class Service extends Model{
 
     //String title String description, String refURL, String Price, String zipcode, String phoneno, String email
 
-        public String serivceID;
+
 
         public String name;
         public String description;
@@ -48,33 +48,22 @@ public class Service extends Model{
         //public Date endDate;
         public String servicedArea;
         public String servicedCity;
-        public String user;
+        public String createdBy;
         public boolean active;
         public float rating;
         public int viewCount;
         public int serviceCount;
-        public String price;
+        public Price price;
         public String zipcode;
         public String phoneno;
         public String email;
+        
+        public Date createdOnDate;
+        public Date lastModifieDate;
+        
+    
 
-     public Service()
-     {
-
-     }
-
-    public Service(String title, String description, String refURL, String price, String zipcode, String phoneno, String email)
-    {
-
-        this.name=title;
-        /*this.description=description;
-        this.refURL=refURL;
-        this.zipcode=zipcode;
-        this.phoneno=phoneno;
-        this.email=email;*/
-
-    }
-
+    
 
 
 

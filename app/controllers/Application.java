@@ -1,10 +1,15 @@
 package controllers;
 
+import models.Price;
 import models.Service;
 import play.*;
+import play.data.validation.Required;
 import play.mvc.*;
+import securesocial.provider.SocialUser;
 
 import java.util.*;
+
+import controllers.securesocial.SecureSocial;
 
 
 public class Application extends Controller {
@@ -15,27 +20,16 @@ public class Application extends Controller {
     }
 
 
-    private static int count=0;
 
-    public static void AddService(String title, String description, String refURL, String Price, String zipcode, String phoneno, String email)
+    
+    
+    
+    public static List<Service> getServices()
     {
-
-        System.out.println("************ ADD Service Controller ***************");
-
-        /*Service newService= new Service();
-
-        newService.serivceID="id_"+count++;
-        newService.name=title;
-        newService.description=description;
-        newService.refURL=refURL;
-        newService.price=Price;
-        newService.zipcode=zipcode;
-        newService.phoneno=phoneno;
-        newService.email=email;
-
-        newService.save();*/
-
-
+    		
+    	return Service.findAll();
+    	
+    	
     }
 
 
