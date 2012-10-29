@@ -25,30 +25,30 @@
 }
 </style>
 
-<script src="/public/javascripts/jquery-1.7.1.min.js"  />
-    <script type="text/javascript" >
-
-        alert('aldgalkg');
-
-
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() { // this runs as soon as the page is ready (DOM is loaded)
+            $("#header_wrapper") // selecting "div" (you can also select the element by its id or class like in css )
+                    .load("/header.html") // load in the file specified
+        });
+        
+        $(document).ready(function() { // this runs as soon as the page is ready (DOM is loaded)
+            $("#leftsidebar") // selecting "div" (you can also select the element by its id or class like in css )
+                    .load("/left.html") // load in the file specified
+        });
+        
     </script>
 
 </head>
 
 <body>
-<div id="header">
-<div class="inner">
-<div style="position:absolute; width: 185px; color:#FFF; right:0; top: 5px;"><a href="log-in.html">Already A Member?</a> <strong><a href="sign-up.html">Sign In</a></strong></div>
-  <img src="/public/images/logo.jpg" width="300" height="79" alt="bb" style="float:left; margin-top:20px; margin-bottom:20px;" />
-  <div class="search">
-  <form action="#" method="post">
-  <input name="" type="text" class="input-box1" placeholder="search for services" />
-  <input type="text" class="input-box2" placeholder="city or zipcode" />
-  <input name="" type="button" value="Go" class="input-box3" />
-  </form>
-  </div>
-  </div>
+<div id="header_wrapper" class="header_wrapper" align="">
+
+      
+
 </div>
+
+
 <div class="button">
 <div class="inner">
 <h1 style="font-size:24px; color:#339eff; text-align:left;">Create Your Cashlets Profile</h1>
