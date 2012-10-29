@@ -56,7 +56,7 @@ public class FacebookProvider extends OAuth2Provider
             throw new AuthenticationException();
         }
         
-        user.id.id = me.get(ID).getAsString();
+        user.id.id = me.get(EMAIL).getAsString();
         user.firstName= me.get(NAME).getAsString();
 
         //
