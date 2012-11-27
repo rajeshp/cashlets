@@ -31,7 +31,13 @@
 $(document).ready(function() { // this runs as soon as the page is ready (DOM is loaded)
     $("#header_wrapper") // selecting "div" (you can also select the element by its id or class like in css )
             .load("/header.html") // load in the file specified
+
+
+
 });
+
+
+
 </script>
 
 
@@ -92,7 +98,7 @@ $(document).ready(function() { // this runs as soon as the page is ready (DOM is
 <div class="main-content2">
   <div class="form1">
   <div style="position:absolute; top: -3px; left: 111px;"><img src="/public/images/form-top.png" width="221" height="33" alt="afdsa" /></div>
-  <form action="/addService" method="POST">
+  <form action="/addService" method="POST" id="addService">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td width="52%"><span class="padd">Title</span></td>
@@ -144,12 +150,26 @@ $(document).ready(function() { // this runs as soon as the page is ready (DOM is
       <input name="email" type="text" class="text-field3" />
     </span></td>
   </tr>
+
+      <tr>
+          <td style="padding-top:30px">Add Pictures </td>
+          <td style="padding-top:30px" id="pictures"> <input type="file" name="pictures[]"  />
+              <a href="#" id="addMorePictures" class="" onclick="addMorePictures()"  >Add More Pictures of your Service </a>
+
+          </td>
+           <
+      </tr>
+
   <tr>
     <td>&nbsp;</td>
-    <td class="padd"><span >
+    <td class="padd" ><span >
       <input type="submit" name="button" id="button" value="ADD" class="button22" />
     </span></td>
   </tr>
+
+
+
+
   </table>
 
   
