@@ -44,6 +44,12 @@ public class Router extends Controller {
         if(user!=null && (page.equals("log-in")||page.equals("sign-up")))
         	indexPage();
         	else {
+
+            if(page.equals("addServicePage"))
+                Services.addServicePage();
+
+
+
         	 render("/public/html/"+page+".html");
 		}
         
@@ -54,6 +60,8 @@ public class Router extends Controller {
     {
     	render("/public/html/index.html");
     }
+
+
 
     
 }

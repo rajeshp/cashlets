@@ -6,16 +6,21 @@
 
 *       /auth                                   module:securesocial
 GET     /                                       Router.indexPage
+
+GET  /showAddServicePage                        ServiceController.showAddServicePage
+
 GET     /{page}.html                            Router.route
 GET     /login                                  securesocial.SecureSocial.login
 
-POST    /addService                               ServiceController.AddService
+#POST    /addService                               ServiceController.AddService
 
 POST     /registerUser                            UserController.registerUser
 
 #GET     /*.jpg                                  staticFile:/public/images/*.jpg
 
 GET    /logout								UserController.logOutUser
+
+GET    /test                                TestController.test
 
 
 # Ignore favicon requests

@@ -3,13 +3,17 @@ package controllers;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import models.Photo;
+import org.apache.solr.common.SolrDocument;
 import org.hibernate.type.descriptor.BinaryStream;
-import play.db.jpa.Blob;
+import play.Logger;
 import play.db.jpa.JPA;
 import play.libs.MimeTypes;
+import play.modules.morphia.Blob;
 import play.modules.morphia.Model;
 import play.mvc.Controller;
 import play.mvc.With;
@@ -44,44 +48,83 @@ public class ServiceController extends Controller {
         p.price=price;
         newService.price=p;
         newService.zipcode=zipcode;
-        
+
+        if(currentUser!=null)
         newService.createdBy=currentUser.id.id;
+        else
+        newService.createdBy="Anonymous";
+
+
         Date today = new Date();
         newService.createdOnDate= today; 
         newService.lastModifieDate= today;
 
 
-        Photo servicePic = new Photo();
+        List<Blob> uploaded_pics = new ArrayList<Blob>();
+
+
+        if(photo!=null)
+        {
             try
             {
+                Blob b =    new Blob();
+                b.set(photo, MimeTypes.getContentType(photo.getName()));
 
-                String fileType = MimeTypes.getContentType(photo.getName());
-                Blob fileBinary = new Blob();
+                uploaded_pics.add(b);
 
-                fileBinary.set(new FileInputStream(photo),fileType);
+                Photo service_photo = new Photo();
+
+                if(currentUser!=null)
+                    service_photo.addedBy=currentUser.id.id;
+                else
+                    service_photo.addedBy="Anonymous";
+
+                service_photo.addedOn = new Date();
+
+                service_photo.photo_binary=b;
+
+                service_photo.save();
 
 
-                servicePic.photo_binary=fileBinary;
-                servicePic.addedOn = new Date();
+                List<String> photoids = new ArrayList<String>();
+                photoids.add(service_photo.getId().toString());
 
+                newService.photos = photoids;
 
-                servicePic.save();
 
             }
-            catch(IOException io)
+            catch(IOException ie)
             {
-                System.out.println("Error Uploading image");
-                servicePic.delete();
-
-
+                Logger.error("FileUpload IOException : ", ie);
             }
 
-
-        newService.save();
+        }
+        else
+        {
+            Logger.info("No Service pics uploaded by user");
         }
 
+        //newService.photos = uploaded_pics;
+
+        newService.save();
+
+        render("/public/html/index.html");
+
+        }
+        else
+        {
+            render("/login");
+        }
 
     }
 	
-	
+
+    public static void showAddServicePage()
+    {
+        System.out.println("page render from service controller");
+        render();
+
+    }
+
+
 }

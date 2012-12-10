@@ -2,7 +2,8 @@ package models;
 
 import com.google.code.morphia.annotations.*;
 import com.google.code.morphia.annotations.Id;
-import play.db.jpa.Blob;
+import play.modules.morphia.Blob;
+
 import java.util.Date;
 
 
@@ -17,7 +18,9 @@ import java.util.Date;
 public class Photo extends Model {
 
 
-    public static Blob photo_binary;
-    public static Date addedOn;
+    public Blob photo_binary;
+    public  Date addedOn;
+    public  String addedBy;
+
 
 }

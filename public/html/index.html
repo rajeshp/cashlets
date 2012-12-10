@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
@@ -61,26 +61,61 @@ for(models.Service service : controllers.Application.getServices())
 
 
 <div class="item" id="item1" >
-<a href="#"><img src="/public/images/thumbnail.jpg" width="86" height="73" alt="ds" style="float:left; margin-right:20px; margin-top:5px;" /></a>
-  <h2>
-  #{if (service.name==null) }
-  <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing</a>
-  #{/if}
-  #{else}
-  <a href="#"> ${service.name}    </a>
-  #{/else}
-  
-  
-  </h2>
-  <p>
-  #{if (service.description==null)}
-  Donec mattis, mi sed varius volutpat, velit enim maleVestibulum metus lectusscon a volutpat vel, consectetur eget velit enim male dolor. Nulla facilisi. 
-  #{/if}
-  #{else}
-  ${service.description}
-  #{/else}
-  
-  </p>
+
+
+    <table>
+        <tr>
+            <td rowspace=2>
+
+            #{if (service.getPhotos()==null) }
+                <a href="#"> <img src="/public/images/thumbnail.jpg" width="80" height='109'>     </a>
+            #{/if}
+            #{else}
+                <a href="#"> <img src="@{Application.getPhoto(service.getPhotos().get(0))}" width="80" height='109'> </a>
+            #{/else}
+
+            </td>
+
+            <td>
+
+                <h2>
+
+                #{if (service.name==null) }
+                    <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing</a>
+                #{/if}
+                #{else}
+                    <a href="#"> ${service.name}    </a>
+                #{/else}
+
+
+                </h2>
+
+
+            <td>
+
+        </tr>
+
+        <td>&nbsp;</td>
+        <td>
+
+            <p>
+            #{if (service.description==null)}
+                Donec mattis, mi sed varius volutpat, velit enim maleVestibulum metus lectusscon a volutpat vel, consectetur eget velit enim male dolor. Nulla facilisi.
+            #{/if}
+            #{else}
+            ${service.description}
+            #{/else}
+
+
+            </p>
+
+
+        </td>
+
+        </tr>
+
+    </table>
+
   <div style="float:left; width:200px;">
   <img src="/public/images/star.jpg" width="17" height="20" alt="dsa" />
   <img src="/public/images/star.jpg" width="17" height="20" alt="dsa" />

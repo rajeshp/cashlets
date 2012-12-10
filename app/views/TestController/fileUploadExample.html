@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+        List of files uploaded
+<br>
+<br>
+
+
+
+        %{
+        int i =1;
+        for(File f : controllers.TestController.getALLFileUploads())
+        {
+
+        InputStream fis = f.getPhoto().get();
+
+
+
+            out.println("file "+i+ " " );
+            i++;
+
+
+
+        }
+
+        }%
+
+
+        #{list items:models.FileUploadTestModel.findAll(), as:'user'}
+        <img src="@{Application.getPhoto("3")}" width="80" height='109'>
+        #{/list}
+
+<br>
+<br>
+<br>
+
+        #{list items:models.Service.findAll(), as:'service'}
+
+        #{if (service.getPhotos()==null) }
+
+        <img src="/public/images/thumbnail.jpg" width="80" height='109'>
+        #{/if}
+        #{else}
+
+        <img src="@{Application.getPhoto(service.getPhotos().get(0))}" width="80" height='109'>
+
+        #{/else}
+
+        <br>
+
+        #{/list}
+
+
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Untitled Document</title>
+    <link href="/public/stylesheets/style.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .ii {
+            font-size: 16px;
+        }
+        .ii {
+            color: #36852a;
+            font-size: 24px;
+        }
+        .gg {
+            color: #000;
+        }
+        .jj {
+            font-size: 24px;
+            color: #36852a;
+        }
+        .qwe {
+            color: #25751e;
+            font-weight: bold;
+        }
+    </style>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() { // this runs as soon as the page is ready (DOM is loaded)
+            $("#header_wrapper") // selecting "div" (you can also select the element by its id or class like in css )
+                    .load("/header.html") // load in the file specified
+
+
+
+        });
+
+
+
+    </script>
+
+
+</head>
+
+<body>
+<div id="header_wrapper" class="header_wrapper" align="">
+
+    <h1> this is header</h1>
+
+</div>
+
+<div class="button">
+    <div class="inner">
+        <h1 style="font-size:24px; color:#339eff; text-align:left;">Add Your Service</h1>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="inner2">
+        <div class="sidebar3">
+
+        #{if (user==null) }
+            <div class="form2">
+
+
+            </div>
+        #{/if}
+
+            <div style="background:url(/public/images/testimonails.jpg) no-repeat top; height:350px; margin-top:20px;">
+                <h3 style="font-size:30px; color:#032e64; font-weight:normal; padding-left:10px; padding-top:10px;">Testimonails</h3>
+                <p style="font-size:13px; color:#032e64; font-weight:normal; padding-left:10px; padding-top:5px;">Morbi quis nisi neque, non condimentum nibh. Curabitur ultricies quam non est interdum nec adipiscing dolor aliquet.Nam fermentum, diam vitae pharetra fermentum, ligula libero posuere lacus, </p>
+            </div>
+        </div>
+
+        <div class="main-content2">
+            <div class="form1">
+                <div style="position:absolute; top: -3px; left: 111px;"><img src="/public/images/form-top.png" width="221" height="33" alt="afdsa" /></div>
+                <form action="/addService" method="POST" id="addService">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="52%"><span class="padd">Title</span></td>
+                            <td width="48%" class="padd">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span class="padd">
+      <input name="title" type="text"   class="text-field1" />
+    </span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="padd">Description</span></td>
+                            <td class="padd">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span class="padd">
+      <input name="description" type="text" class="text-field2" />
+    </span></td>
+                        </tr>
+                        <tr class="padd">
+                            <td>Reference Link</td>
+                            <td class="padd">Price</td>
+                        </tr>
+                        <tr>
+                            <td><span class="padd">
+      <input name="refURL" type="text" class="text-field3" />
+    </span></td>
+                            <td><span class="padd">
+      <input name="price" type="text" class="text-field3" />
+    </span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="padd"><span ><span class="padd">If its location based then pl enter Zipcode</span></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span class="padd">
+      <input name="zipcode" type="text" class="text-field1" />
+    </span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="padd">Phone No.</span></td>
+                            <td class="padd"><span >Email ID</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="padd">
+      <input name="phone" type="text" class="text-field3" />
+    </span></td>
+                            <td><span class="padd">
+      <input name="email" type="text" class="text-field3" />
+    </span></td>
+                        </tr>
+
+                        <tr>
+                            <td style="padding-top:30px">Add Pictures </td>
+                            <td style="padding-top:30px" id="pictures">
+                                <input type="file" id="photo" name="photo" />
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td class="padd" ><span >
+      <input type="submit" name="button" id="button" value="ADD" class="button22" />
+    </span></td>
+                        </tr>
+
+
+
+
+                    </table>
+
+
+
+
+                </form>
+
+
+                <br> <br>
+
+
+
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+</div>
+<div class="clear"></div><div class="push"></div>
+<div class="footer">
+    <div class="inner">
+        <p style="padding-bottom:5px;"><a href="about-us.html">About</a>   &nbsp;&nbsp; ::  &nbsp;&nbsp;  <a href="cashlets.html">Cashlets</a>    &nbsp;&nbsp;  ::   &nbsp;&nbsp;  <a href="how-it-works.html">How it Works</a>     &nbsp;&nbsp;  ::    &nbsp;&nbsp;  <a href="privacy-policy.html">Privacy & Terms</a>  </p>
+        <p style="font-size:13px;">Copyright Cashlets. All Right Reserved.</p>
+    </div>
+</div>
+</body>
+</html>

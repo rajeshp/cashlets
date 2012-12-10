@@ -4,8 +4,10 @@ package models;
 
 
 import java.util.Date;
+import java.util.List;
 
 import com.google.code.morphia.annotations.Entity;
+import play.modules.morphia.Blob;
 
 /**
  * Created with IntelliJ IDEA.
@@ -61,7 +63,10 @@ public class Service extends Model{
         public Date createdOnDate;
         public Date lastModifieDate;
         
-    
+        public List<String> photos;
+
+        //public List<Blob>  photos;
+
 
     
 

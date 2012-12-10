@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Photo;
 import models.Price;
 import models.Service;
 import play.*;
@@ -34,6 +35,17 @@ public class Application extends Controller {
 
 
 
+    public static void getPhoto(String id)
+    {
+
+        Photo p = Photo.findById(id);
+
+        response.setContentTypeIfNotSet(p.photo_binary.type());
+
+        renderBinary(p.photo_binary.get());
+
+
+    }
 
 
 }
