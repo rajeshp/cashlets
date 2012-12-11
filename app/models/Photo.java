@@ -17,10 +17,7 @@ import java.util.Date;
 @Entity
 public class Photo extends Model {
 
-
     public Blob photo_binary;
     public  Date addedOn;
     public  String addedBy;
-
-
 }

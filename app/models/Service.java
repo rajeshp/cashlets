@@ -41,8 +41,6 @@ public class Service extends Model{
 
     //String title String description, String refURL, String Price, String zipcode, String phoneno, String email
 
-
-
         public String name;
         public String description;
         public String refURL;
@@ -55,22 +53,14 @@ public class Service extends Model{
         public float rating;
         public int viewCount;
         public int serviceCount;
-        public Price price;
+        public float price;
+        public String currency;
         public String zipcode;
         public String phoneno;
         public String email;
-        
         public Date createdOnDate;
         public Date lastModifieDate;
         
         public List<String> photos;
-
-        //public List<Blob>  photos;
-
-
-    
-
-
-
 
 }

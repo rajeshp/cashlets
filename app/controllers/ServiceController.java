@@ -1,24 +1,18 @@
 package controllers;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import models.Photo;
-import org.apache.solr.common.SolrDocument;
-import org.hibernate.type.descriptor.BinaryStream;
 import play.Logger;
-import play.db.jpa.JPA;
 import play.libs.MimeTypes;
 import play.modules.morphia.Blob;
-import play.modules.morphia.Model;
 import play.mvc.Controller;
 import play.mvc.With;
 
-import models.Price;
 import models.Service;
 import securesocial.provider.SocialUser;
 import controllers.securesocial.SecureSocial;
@@ -44,24 +38,20 @@ public class ServiceController extends Controller {
         newService.name=title;
         newService.description=description;
         newService.refURL=refURL;
-        Price p = new Price();
-        p.price=price;
-        newService.price=p;
+        newService.price=price;
+        newService.currency="INR";
         newService.zipcode=zipcode;
 
-        if(currentUser!=null)
-        newService.createdBy=currentUser.id.id;
-        else
-        newService.createdBy="Anonymous";
-
+            if(currentUser!=null)
+                newService.createdBy=currentUser.id.id;
+           /* else
+            newService.createdBy="Anonymous"; */
 
         Date today = new Date();
         newService.createdOnDate= today; 
         newService.lastModifieDate= today;
 
-
         List<Blob> uploaded_pics = new ArrayList<Blob>();
-
 
         if(photo!=null)
         {
@@ -69,28 +59,22 @@ public class ServiceController extends Controller {
             {
                 Blob b =    new Blob();
                 b.set(photo, MimeTypes.getContentType(photo.getName()));
-
                 uploaded_pics.add(b);
-
                 Photo service_photo = new Photo();
-
                 if(currentUser!=null)
                     service_photo.addedBy=currentUser.id.id;
                 else
                     service_photo.addedBy="Anonymous";
 
                 service_photo.addedOn = new Date();
-
                 service_photo.photo_binary=b;
-
+            //saving the service images in Photos collection as blob.
                 service_photo.save();
 
-
+            //adding the references of images to the service collection for easier and faster search
                 List<String> photoids = new ArrayList<String>();
                 photoids.add(service_photo.getId().toString());
-
                 newService.photos = photoids;
-
 
             }
             catch(IOException ie)
@@ -104,8 +88,7 @@ public class ServiceController extends Controller {
             Logger.info("No Service pics uploaded by user");
         }
 
-        //newService.photos = uploaded_pics;
-
+        //saving the service in collection
         newService.save();
 
         render("/public/html/index.html");
@@ -118,13 +101,11 @@ public class ServiceController extends Controller {
 
     }
 	
-
     public static void showAddServicePage()
     {
         System.out.println("page render from service controller");
         render();
 
     }
-
 
 }
