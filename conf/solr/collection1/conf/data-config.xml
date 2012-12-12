@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataConfig>
+     <dataSource name="MyMongo" type="MongoDataSource" database="test" />
+     <document name="employees">
+         <entity name="employees"  processor="MongoEntityProcessor"
+                 query="{'Active':1}"
+                 collection="employees"
+                 datasource="MyMongo"
+                 transformer="MongoMapperTransformer" command="{}" >
+             <field column="_id"           name="_id"       />
+             <field column="name"     name="name" />
+         </entity>
+     </document>
+ </dataConfig>
