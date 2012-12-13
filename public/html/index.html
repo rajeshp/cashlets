@@ -26,6 +26,7 @@
       
 
 </div>
+
 <div class="button">
 <div class="inner2">
 #{if (user==null)}
@@ -48,99 +49,50 @@
 </div>
 
 
-<div class="main-content"> 
 
-%{
-for(models.Service service : controllers.Application.getServices())
-{
+<div class="main-content2" style="padding-left: 50px">
 
 
-}%
+#{list items:models.Service.findAll(), as:'service'}
+
+   <div id="service_block" style="padding-left: 0px">
+
+    <!-- <a href="#"><img src="/public/images/thumbnail.jpg" width="86" height="73" alt="ds" style="float:left; margin-right:20px; margin-top:5px;" /></a> -->
+
+
+       #{if (service.getPhotos()==null) }
+           <a href="/showServiceDetails?id=${service.id}"> <img src="/public/images/thumbnail.jpg" width="86" height="73" alt="ds" style="float:left; margin-right:20px; margin-top:5px;" />     </a>
+       #{/if}
+       #{else}
+           <a href="/showServiceDetails?id=${service.id}"> <img src="@{Application.getPhoto(service.getPhotos().get(0))}" width="86" height="73" alt="ds" style="float:left; margin-right:20px; margin-top:5px;" /> </a>
+       #{/else}
 
 
 
+       <h2><a href="/showServiceDetails?id=${service.id}"> ${service.name} </a></h2>
 
-<div class="item" id="item1" >
+       <p>${service.description}</p>
 
-
-    <table>
-        <tr>
-            <td rowspace=2>
-
-            #{if (service.getPhotos()==null) }
-                <a href="#"> <img src="/public/images/thumbnail.jpg" width="80" height='109'>     </a>
-            #{/if}
-            #{else}
-                <a href="#"> <img src="@{Application.getPhoto(service.getPhotos().get(0))}" width="80" height='109'> </a>
-            #{/else}
-
-            </td>
-
-            <td>
-
-                <h2>
-
-                #{if (service.name==null) }
-                    <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing</a>
-                #{/if}
-                #{else}
-                    <a href="#"> ${service.name}    </a>
-                #{/else}
-
-
-                </h2>
-
-
-            <td>
-
-        </tr>
-
-        <td>&nbsp;</td>
-        <td>
-
-            <p>
-            #{if (service.description==null)}
-                Donec mattis, mi sed varius volutpat, velit enim maleVestibulum metus lectusscon a volutpat vel, consectetur eget velit enim male dolor. Nulla facilisi.
-            #{/if}
-            #{else}
-            ${service.description}
-            #{/else}
-
-
-            </p>
-
-
-        </td>
-
-        </tr>
-
-    </table>
-
-  <div style="float:left; width:200px;">
-  <img src="/public/images/star.jpg" width="17" height="20" alt="dsa" />
-  <img src="/public/images/star.jpg" width="17" height="20" alt="dsa" />
-  <img src="/public/images/star.jpg" width="17" height="20" alt="dsa" />
-  <img src="/public/images/star.jpg" width="17" height="20" alt="dsa" />
-  <img src="/public/images/star2.jpg" width="17" height="20" alt="dsa" />
-  </div>
-  
-  <div style="float:right; width:20px;">
-     <a href="#"><img src="/public/images/read-more.jpg" width="12" height="16" alt="dsaf" /></a></div>
+    <div style="float:left; width:200px;">
+        <img src="/public/images/star.jpg" width="17" height="20" alt="dsa" />
+        <img src="/public/images/star.jpg" width="17" height="20" alt="dsa" />
+        <img src="/public/images/star.jpg" width="17" height="20" alt="dsa" />
+        <img src="/public/images/star.jpg" width="17" height="20" alt="dsa" />
+        <img src="/public/images/star2.jpg" width="17" height="20" alt="dsa" />
+    </div>
+    <div style="float:right; width:20px;">
+        <a href="#"><img src="/public/images/read-more.jpg" width="12" height="16" alt="dsaf" /></a></div>
     <div class="clear"></div>
-  </div>
-  
-  
-  %{
-  
-  }
-  
-  }%
-  
-  </div>
 
+   </div>
 
+    #{/list}
 
 </div>
+
+
+
+
 <div class="clear"></div><div class="push"></div>
 <div class="footer">
 <div class="inner">
