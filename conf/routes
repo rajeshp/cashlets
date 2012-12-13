@@ -13,6 +13,8 @@ GET  /showAddServicePage                        ServiceController.showAddService
 GET  /{page}.html                            Router.route
 GET  /login                                  securesocial.SecureSocial.login
 GET  /showUserProfile                            UserController.showUserProfile
+GET  /userProfile                            UserController.userProfile
+GET  /editProfile                            UserController.editProfile
 
 #POST    /addService                               ServiceController.AddService
 

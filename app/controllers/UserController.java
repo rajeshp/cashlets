@@ -3,7 +3,9 @@ package controllers;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
+import models.Service;
 import models.User;
 
 import com.sun.istack.internal.FinalArrayList;
@@ -107,6 +109,22 @@ public class UserController extends Controller {
 
 
     public static void showUserProfile()
+    {
+        render();
+    }
+
+    public static void userProfile()
+    {
+
+      SocialUser currentUser =    SecureSocial.getCurrentUser();
+
+        List<Service> userServices = Service.q().filter("createdBy",currentUser.email).asList();
+
+
+        render(userServices);
+    }
+
+    public static void editProfile()
     {
         render();
     }
