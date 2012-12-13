@@ -1,8 +1,15 @@
 <div id="inf-table" class="line">
 
 
+
+
+
+
                             <table id="orders-table" class="orders-table">
                     <thead>
+
+
+
                     <tr>
                         <th width="15%" class="col-order-no">Post Date</th>
                         <th width="73%" colspan="3">
@@ -18,10 +25,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                        
+
+                    #{list userServices ,as:'service' }
+
                             <tr class="fk-inf-scroll-item order-item-row ">
                                 <td width="15%" class="order-id">
-                                    <a href="#">12/12/2012</a>
+                                    <a href="#">${service.createdOnDate.format()}</a>
 
                         
                                 </td>
@@ -29,9 +38,9 @@
                                     <table width="100%" class="order-item-table">
                                         <tbody>
                                                                                         <tr class="last">
-                                                <td width="40%" title="">Best Home Made Food Service in Bangalore .</td>
-                                                <td width="15%">Rs. 176</td>
-                                                <td width="45%">We are providing home made food of all cuisine in Bangalore. Free home delivery . Breakfast, Lunch and Dinner available .</td>
+                                                <td width="40%" title="">${service.name}</td>
+                                                <td width="15%">${service.price}</td>
+                                                <td width="45%">${service.description}</td>
                                             </tr>
 
                                                                                         </tbody><tbody>
@@ -44,189 +53,7 @@
                                 </td>
                             </tr>
 
-                                
-                            <tr class="fk-inf-scroll-item order-item-row even">
-                                <td width="15%" class="order-id">
-                                    <a href="">1/12/2012</a>
-
-                                    
-                                </td>
-                                <td width="73%" colspan="3">
-                                    <table width="100%" class="order-item-table">
-                                        <tbody>
-                                                                                        <tr class="last">
-                                                <td width="40%" title="">Best Home Made Food Service in Bangalore .</td>
-                                                <td width="15%">Rs. 469</td>
-                                                <td width="45%">We are providing home made food of all cuisine in Bangalore. Free home delivery . Breakfast, Lunch and Dinner available .</td>
-                                            </tr>
-
-                                                                                        </tbody><tbody>
-                                    </tbody></table>
-                                </td>
-                                <td width="10%" class="order-utils">
-                                    <a href="#">Edit</a>
-                                    <a href="#">Delete</a>
-                                </td>
-                            </tr>
-
-                                
-                            <tr class="fk-inf-scroll-item order-item-row ">
-                                <td width="15%" class="order-id">
-                                    <a href="#">15/09/2012</a>
-
-                                    
-                                </td>
-                                <td width="73%" colspan="3">
-                                    <table width="100%" class="order-item-table">
-                                        <tbody>
-                                                                                        <tr class="last">
-                                                <td width="40%" title="">Best Home Made Food Service in Bangalore .</td>
-                                                <td width="15%">Rs. 499</td>
-                                                <td width="45%">We are providing home made food of all cuisine in Bangalore. Free home delivery . Breakfast, Lunch and Dinner available .</td>
-                                            </tr>
-
-                                                                                        </tbody><tbody>
-                                    </tbody></table>
-                                </td>
-                                <td width="10%" class="order-utils">
-                                    <a href="#">Edit</a>
-                                    <a href="#">Delete</a>
-                                </td>
-                            </tr>
-
-                                
-                            <tr class="fk-inf-scroll-item order-item-row even">
-                                <td width="15%" class="order-id">
-                                    <a href="#">09/08/2012</a>
-
-                                    
-                                </td>
-                                <td width="73%" colspan="3">
-                                    <table width="100%" class="order-item-table">
-                                        <tbody>
-                                                                                        <tr class="">
-                                                <td width="40%" title="">Best Home Made Food Service in Bangalore .</td>
-                                                <td width="15%">Rs. 104</td>
-                                                <td width="45%">We are providing home made food of all cuisine in Bangalore. Free home delivery . Breakfast, Lunch and Dinner available .</td>
-                                            </tr>
-
-                                                                                            <tr class="last">
-                                                <td width="40%" title="Best Home Made Food Service in Bangalore .">Best Home Made Food Service in Bangalore .</td>
-                                                <td width="15%">Rs. 398</td>
-                                                <td width="45%">We are providing home made food of all cuisine in Bangalore. Free home delivery . Breakfast, Lunch and Dinner available .</td>
-                                            </tr>
-
-                                                                                        </tbody><tbody>
-                                    </tbody></table>
-                                </td>
-                                <td width="10%" class="order-utils">
-                                   <a href="#">Edit</a>
-                                    <a href="#">Delete</a>
-                                </td>
-                            </tr>
-
-                                
-                            <tr class="fk-inf-scroll-item order-item-row ">
-                                <td width="15%" class="order-id">
-                                    <a href="#">1/1/2012</a>
-
-                                   
-                                </td>
-                                <td width="73%" colspan="3">
-                                    <table width="100%" class="order-item-table">
-                                        <tbody>
-                                                                                        <tr class="last">
-                                                <td width="40%" title="">Best Home Made Food Service in Bangalore .</td>
-                                                <td width="15%">Rs. 374</td>
-                                                <td width="45%">We are providing home made food of all cuisine in Bangalore. Free home delivery . Breakfast, Lunch and Dinner available .</td>
-                                            </tr>
-
-                                                                                        </tbody><tbody>
-                                    </tbody></table>
-                                </td>
-                                <td width="10%" class="order-utils">
-                                    <a href="#">Edit</a>
-                                    <a href="#">Delete</a>
-                                </td>
-                            </tr>
-
-                                
-                            <tr class="fk-inf-scroll-item order-item-row even">
-                                <td width="15%" class="order-id">
-                                    <a href="#">8/8/2012</a>
-
-                                    
-                                </td>
-                                <td width="73%" colspan="3">
-                                    <table width="100%" class="order-item-table">
-                                        <tbody>
-                                                                                        <tr class="last">
-                                                <td width="40%" title="Best Home Made Food Service in Bangalore .">Best Home Made Food Service in Bangalore .</td>
-                                                <td width="15%">Rs. 101</td>
-                                                <td width="45%">We are providing home made food of all cuisine in Bangalore. Free home delivery . Breakfast, Lunch and Dinner available .</td>
-                                            </tr>
-
-                                                                                        </tbody><tbody>
-                                    </tbody></table>
-                                </td>
-                                <td width="10%" class="order-utils">
-                                    <a href="#">Edit</a>
-                                    <a href="#">Delete</a>
-                                </td>
-                            </tr>
-
-                                
-                            <tr class="fk-inf-scroll-item order-item-row ">
-                                <td width="15%" class="order-id">
-                                    <a href="#">2/2/2012</a>
-
-                                    
-                                </td>
-                                <td width="73%" colspan="3">
-                                    <table width="100%" class="order-item-table">
-                                        <tbody>
-                                                                                        <tr class="last">
-                                                <td width="40%" title="Best Home Made Food Service in Bangalore .">Best Home Made Food Service in Bangalore .</td>
-                                                <td width="15%">Rs. 179</td>
-                                                <td width="45%">We are providing home made food of all cuisine in Bangalore. Free home delivery . Breakfast, Lunch and Dinner available .</td>
-                                            </tr>
-
-                                                                                        </tbody><tbody>
-                                    </tbody></table>
-                                </td>
-                                <td width="10%" class="order-utils">
-                                    <a href="#">Edit</a>
-                                    <a href="#">Delete</a>
-                                </td>
-                            </tr>
-
-                                
-                            <tr class="fk-inf-scroll-item order-item-row even">
-                                <td width="15%" class="order-id">
-                                    <a href="#">20/01/2012</a>
-
-                                    
-                                </td>
-                                <td width="73%" colspan="3">
-                                    <table width="100%" class="order-item-table">
-                                        <tbody>
-                                                                                        <tr class="last">
-                                                <td width="40%" title="Best Home Made Food Service in Bangalore .">Best Home Made Food Service in Bangalore .</td>
-                                                <td width="15%">Rs. 117</td>
-                                                <td width="45%">We are providing home made food of all cuisine in Bangalore. Free home delivery . Breakfast, Lunch and Dinner available .</td>
-
-                                            </tr>
-
-                                                                                        </tbody><tbody>
-                                    </tbody></table>
-                                </td>
-                                <td width="10%" class="order-utils">
-                                
-
-                                    <a href="#">Edit</a>
-                                    <a href="#">Delete</a>
-                                </td>
-                            </tr>
+                     #{/list}
 
                                                     </tbody>
                 </table>
