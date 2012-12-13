@@ -105,4 +105,12 @@ public class UserController extends Controller {
     	
     }
 
+
+    public static void showUserProfile()
+    {
+        render();
+    }
+
+
+
 }

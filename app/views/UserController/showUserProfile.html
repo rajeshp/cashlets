@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>My Profile</title>
+<link href="/public/stylesheets/style.css" rel="stylesheet" type="text/css" />
+
+<link href="/public/stylesheets/application.css" rel="stylesheet" type="text/css" />
+
+
+<script src="/public/javascripts/application.js" type="text/javascript">
+</script>
+
+
+<style>
+
+
+
+
+
+.orders-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.orders-table th {
+    border-bottom: 1px solid #999999;
+    border-top: 2px solid #999999;
+    color: #3BB0D7;
+    padding: 1px 2px;
+}
+.orders-table .product-info-header th {
+    border: 0 none;
+}
+.orders-table .order-item-row td {
+    border-bottom: 1px solid #CCCCCC;
+    font-size: 11px;
+    padding: 2px;
+}
+.orders-table a, .order_cat_list a {
+    text-decoration: none;
+}
+.orders-table a:hover, .order_cat_list a:hover {
+    text-decoration: underline;
+}
+.orders-table .col-order-no, .orders-table .order-item-row td.order-id {
+    padding-left: 5px;
+}
+.orders-table .order-item-row.even {
+    background-color: #F2F2F2;
+}
+.orders-table .order-item-table td {
+    border-bottom: 1px dotted #999999;
+}
+.orders-table .order-item-table tr.last td {
+    border: 0 none;
+}
+.orders-table td.order-id, .orders-table td.order-utils {
+    padding-top: 6px;
+    vertical-align: top;
+}
+.orders-table .order-item-table td {
+    vertical-align: top;
+}
+.order-tooltip {
+    box-shadow: 0 1px 4px #BBBBBB;
+}
+.order_cat_list .selected {
+    font-weight: bold;
+}
+.view-order-details, .email-us-order {
+    background-image: url("/public/images/order_sprite-750ed4f6.png");
+    display: inline-block;
+}
+.view-order-details {
+    background-position: 0 1px;
+    height: 15px;
+    width: 21px;
+}
+.email-us-order {
+    background-position: -22px 1px;
+    height: 15px;
+    width: 21px;
+}
+
+
+
+</style>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() { // this runs as soon as the page is ready (DOM is loaded)
+            $("#header_wrapper") // selecting "div" (you can also select the element by its id or class like in css )
+                    .load("/header.html") // load in the file specified
+        });
+
+        $(document).ready(function() { // this runs as soon as the page is ready (DOM is loaded)
+            $("#leftsidebar") // selecting "div" (you can also select the element by its id or class like in css )
+                    .load("/left.html") // load in the file specified
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+<div id="header_wrapper" class="header_wrapper" align="">
+#{include '/public/html/header.html'/}
+</div>
+
+
+
+
+
+<div class="wrapper">
+<div class="inner2">
+<div class="sidebar">
+
+    #{include '/public/html/userTabs.html'/}
+
+
+</div>
+
+
+  <div class="main-content">
+
+      #{include '/public/html/postedService.html'/}
+
+    <div class="clear"></div>
+
+  </div>
+</div>
+
+</div>
+<div class="clear"></div><div class="push"></div>
+
+<?php
+include 'footer.php' ;
+?>
+
+
+</body>
+</html>

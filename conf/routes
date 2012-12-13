@@ -4,23 +4,25 @@
 
 # Home page
 
-*       /auth                                   module:securesocial
-GET     /                                       Router.indexPage
+*    /auth                                   module:securesocial
+GET  /                                       Router.indexPage
+GET  header.html                             staticFile:/public/html/header.html
 
 GET  /showAddServicePage                        ServiceController.showAddServicePage
 
-GET     /{page}.html                            Router.route
-GET     /login                                  securesocial.SecureSocial.login
+GET  /{page}.html                            Router.route
+GET  /login                                  securesocial.SecureSocial.login
+GET  /showUserProfile                            UserController.showUserProfile
 
 #POST    /addService                               ServiceController.AddService
 
-POST     /registerUser                            UserController.registerUser
+POST /registerUser                            UserController.registerUser
 
-#GET     /*.jpg                                  staticFile:/public/images/*.jpg
+#GET /*.jpg                                  staticFile:/public/images/*.jpg
 
-GET    /logout								UserController.logOutUser
+GET  /logout								UserController.logOutUser
 
-GET    /test                                TestController.test
+GET  /test                                TestController.test
 
 
 # Ignore favicon requests
@@ -28,6 +30,7 @@ GET     /favicon.ico                            404
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
+GET     /public/images                          staticDir:public
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}
