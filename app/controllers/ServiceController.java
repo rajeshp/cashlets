@@ -114,4 +114,20 @@ public class ServiceController extends Controller {
 
     }
 
+    public static void editService()
+    {
+        render();
+    }
+
+    public static void deleteService(String id)
+    {
+        Service.q().filter("_id",id).delete();
+
+    }
+
+    public static void updateService(Service service)
+    {
+
+    }
+
 }

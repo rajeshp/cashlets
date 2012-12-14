@@ -110,7 +110,8 @@ public class UserController extends Controller {
 
     public static void showUserProfile()
     {
-        render();
+        userProfile();
+       // render();
     }
 
     public static void userProfile()
