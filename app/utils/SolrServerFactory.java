@@ -4,7 +4,7 @@ package utils;
 
 import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
-import org.apache.solr.client.solrj.impl.CommonsHttpSolrServer;
+import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.core.CoreContainer;
 import org.xml.sax.SAXException;
 
@@ -33,7 +33,8 @@ public class SolrServerFactory {
     public static  SolrServer getServer(String url) throws MalformedURLException
     {
 
-        SolrServer server = new CommonsHttpSolrServer( url );
+        SolrServer server = new HttpSolrServer( url );
+        
 
         return server;
 
