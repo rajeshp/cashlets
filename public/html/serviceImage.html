@@ -1,0 +1,49 @@
+
+
+
+<div class="prd-imageBoxLayout ui-border" id="prd-imageBox-container">
+
+      *{  <span rel="foaf:depiction">
+            <img src="/public/images/products/1201156/18.jpg" alt="Desi Khana" title="Desi Khana | The taste of India Soil"  id="prdImage" class="prd-image">
+        </span>}*
+
+          ${currentService.name}
+
+        #{if currentService.getPhotos() ==null}
+
+        <a id="prdZoomBox" class="prd-imageBox" rel="lightbox" href="/public/images/products/1201156/18.jpg">
+
+            <span rel="foaf:depiction">
+            <img src="/public/images/products/1201156/18.jpg" alt="Desi Khana" title="Desi Khana | The taste of India Soil"  id="prdImage" class="prd-image">
+            </span>
+
+        #{/if}
+        #{else}
+        <a id="prdZoomBox" class="prd-imageBox" rel="lightbox" href="@{Application.getPhoto(currentService.photos.get(0))}" >
+
+        <span rel="foaf:depiction">
+            <img src="@{Application.getPhoto(currentService.photos.get(0))}" alt="Desi Khana" title="Desi Khana | The taste of India Soil"  id="prdImage" class="prd-image">
+        </span>
+
+        #{/else}
+
+
+
+        
+    </a>
+</div>
+
+<div class="bv-reviews"> 
+	<span class="rat">
+		<span class="cust_review rating-4_7">
+		</span>
+	</span>
+	<span class="bv-rate">
+		<cite>(4.7 out of 5)</cite>
+	</span> 
+	<span class="cust-border"><span class="cust-review-lightbox-button" id="LB-S3">
+		<a>Customer Reviews</a>
+	</span>
+</span> 
+</div>
+

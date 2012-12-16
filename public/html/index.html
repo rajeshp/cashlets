@@ -61,15 +61,15 @@
 
 
        #{if (service.getPhotos()==null) }
-           <a href="/showServiceDetails?id=${service.id}"> <img src="/public/images/thumbnail.jpg" width="86" height="73" alt="ds" style="float:left; margin-right:20px; margin-top:5px;" />     </a>
+           <a href="/serviceDetails?id=${service.id}"> <img src="/public/images/thumbnail.jpg" width="86" height="73" alt="ds" style="float:left; margin-right:20px; margin-top:5px;" />     </a>
        #{/if}
        #{else}
-           <a href="/showServiceDetails?id=${service.id}"> <img src="@{Application.getPhoto(service.getPhotos().get(0))}" width="86" height="73" alt="ds" style="float:left; margin-right:20px; margin-top:5px;" /> </a>
+           <a href="/serviceDetails?id=${service.id}"> <img src="@{Application.getPhoto(service.getPhotos().get(0))}" width="86" height="73" alt="ds" style="float:left; margin-right:20px; margin-top:5px;" /> </a>
        #{/else}
 
 
 
-       <h2><a href="/showServiceDetails?id=${service.id}"> ${service.name} </a></h2>
+       <h2><a href="/serviceDetails?id=${service.id}"> ${service.name} </a></h2>
 
        <p>${service.description}</p>
 

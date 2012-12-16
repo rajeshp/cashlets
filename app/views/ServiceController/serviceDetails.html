@@ -1,0 +1,108 @@
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Product Details</title>
+    <link href="/public/stylesheets/style.css" rel="stylesheet" type="text/css" />
+
+    <link href="/public/stylesheets/application.css" rel="stylesheet" type="text/css" />
+    <link href="/public/stylesheets/lightbox.css" rel="stylesheet" />
+    <link href="/public/stylesheets/product.css" rel="stylesheet" />
+
+  
+
+    <script src="/public/javascripts/jquery-1.7.2.min.js"></script>
+    <script src="/public/javascripts/lightbox.js"></script>
+    <script src="/public/javascripts/application.js"></script>
+
+
+
+
+    <script type="text/javascript">
+
+    function fullDesc(){
+        $('#Desc').hide();
+        $('#fullDesc').show();
+
+    }
+
+    function lessDesc(){
+        $('#Desc').show();
+        $('#fullDesc').hide();
+    }
+
+    $(document).ready(function(){
+        enable_footer() ;
+
+
+        $('.carousel').carousel({
+      interval: 3000
+    })
+
+    $('.buyit').click(function(){
+      $('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn(); 
+      $('#email').focus();
+      return false;
+    });
+
+
+    //Close Popups and Fade Layer
+    $('#fade').live('click', function() { //When clicking on the close or fade layer...
+        $('#fade').fadeOut();
+        return false;
+    });
+
+    
+    }) ;
+    
+    </script>
+
+    </head>
+
+    <body>
+    #{include '/public/html/header.html'/}
+
+
+    <!-- <div class="button">
+    <div class="inner2"><a href="add-your-service.php"><img src="images/button.jpg" width="229" height="50" alt="cashlets" /></a></div>
+    </div> -->
+
+    <div class="wrapper">
+    <div class="inner2">
+    <div class="sidebar" style="width:272px">
+
+    #{include '/public/html/serviceImage.html'/}
+
+    </div>
+
+
+      <div class="main-content" style="width:450px;margin-top:16px;float:left;margin-left:40px">
+
+      #{include '/public/html/productDesc.html'/}
+
+      </div>
+
+      <div class="socialFeed" style="margin-top:18px;float:right">
+
+      #{include '/public/html/socialFeed.html'/}
+
+
+      </div>
+    </div>
+
+      <hr>
+
+    #{include '/public/html/userComments.html'/}
+
+
+    </div>
+
+
+  
+
+    
+
+
+
+    </body>
+    </html>

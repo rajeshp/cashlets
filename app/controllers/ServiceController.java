@@ -130,4 +130,21 @@ public class ServiceController extends Controller {
 
     }
 
+
+    public static void serviceDetails(String id)
+    {
+        System.out.println("service ID : "+id);
+
+        Service currentService = getServiceInfoById(id);
+
+        render(currentService);
+    }
+
+
+    public static Service getServiceInfoById(String id)
+    {
+       return Service.findById(id) ;
+    }
+
+
 }
