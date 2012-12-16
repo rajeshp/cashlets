@@ -1,14 +1,21 @@
 package controllers;
 
+import org.apache.commons.httpclient.HttpStatus;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.impl.HttpSolrServer;
+import org.apache.solr.client.solrj.request.SolrPing;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.client.solrj.response.SolrPingResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
+import org.apache.solr.common.SolrException;
 import play.Logger;
 import play.mvc.Controller;
 import utils.SolrServerFactory;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Collection;
 
@@ -65,5 +72,22 @@ public class Search extends Controller {
 
     }
 
+
+
+    public static void test()   throws IOException, SolrException, SolrServerException
+    {
+
+
+        SolrServer server = new HttpSolrServer("http://localhost:8080/solr/");
+
+
+        SolrPingResponse resp = server.ping();
+
+        String pingStatusText = HttpStatus.getStatusText(resp.getStatus());
+
+        render();
+
+
+    }
 
 }
