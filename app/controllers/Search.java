@@ -1,5 +1,7 @@
 package controllers;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServer;
@@ -11,13 +13,16 @@ import org.apache.solr.client.solrj.response.SolrPingResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.SolrException;
+import org.apache.solr.common.SolrInputDocument;
 import play.Logger;
 import play.mvc.Controller;
 import utils.SolrServerFactory;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -33,13 +38,19 @@ public class Search extends Controller {
     {
          System.out.println("***********Inside Search Controller **********************");
 
-        String url = "http://173.230.242.45:8080/solr/" ;
+
+        String q = params.get("q");
+
+
+        System.out.println("Query Value :"+q);
+
+        String url = "http://localhost:8080/solr/" ;
 
         SolrServer solrserver =   SolrServerFactory.getServer(url);
 
         SolrQuery query = new SolrQuery();
 
-        query.setQuery("blah");
+        query.setQuery("text:"+q);
 
          try
          {
@@ -47,8 +58,11 @@ public class Search extends Controller {
 
              SolrDocumentList solrdocs = qresponse.getResults();
 
+             SolrDocument solrdoc = solrdocs.get(0);
 
-             for(SolrDocument doc : solrdocs)
+
+
+             /*for(SolrDocument doc : solrdocs)
              {
 
                  Collection<String> names = doc.getFieldNames();
@@ -60,14 +74,18 @@ public class Search extends Controller {
                  System.out.println("-----------------------------------------------------------------------------");
 
 
-             }
+             }*/
 
+             //render(solrdocs,q);
+
+             render(q, solrdocs);
 
 
          }catch(Exception e)
          {
              Logger.error("Solr Error :"+e.toString() ,e );
          }
+
 
 
     }
@@ -88,6 +106,47 @@ public class Search extends Controller {
         render();
 
 
+    }
+
+
+
+    public static void solrTestInsert() throws Exception
+    {
+
+        SolrServer server = SolrServerFactory.getServer();
+
+        SolrInputDocument doc = new SolrInputDocument();
+
+        doc.setField("id","03");
+        doc.setField("name","Electrician Service");
+        doc.setField("description", "All Electrical applianaces fittign, repair - rajesh sandeep pratik ");
+        doc.setField("price",300);
+        doc.setField("photos", new ArrayList<String>());
+
+        server.add(doc);
+
+        System.out.println("Document added to server");
+
+        server.commit();
+
+    }
+
+
+    public static JsonObject jqueryTest()
+    {
+        List<Double> list = new ArrayList<Double>();
+
+        JsonObject obj = new JsonObject();
+
+        for(int i=0;i<10;i++)
+        {
+            obj.add("id",new JsonPrimitive(Math.random()));
+        }
+
+
+
+
+        return obj;
     }
 
 }

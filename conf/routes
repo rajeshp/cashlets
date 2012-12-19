@@ -21,6 +21,9 @@ GET  /serviceDetails                         ServiceController.serviceDetails
 
 POST /registerUser                            UserController.registerUser
 
+GET /search                                   Search.search
+
+
 #GET /*.jpg                                  staticFile:/public/images/*.jpg
 
 GET  /logout								UserController.logOutUser

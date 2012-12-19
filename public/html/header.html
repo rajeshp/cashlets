@@ -23,8 +23,8 @@
       <a href="/"  ><img src="/public/images/logo.jpg" width="300" height="79" alt="bb" style="float:left; margin-top:20px; margin-bottom:20px;" /> </a>
         <div class="search">
 
-                #{form @Search.search(), method:'POST' }
-                <input name="" type="text" class="input-box1" placeholder="search for services" />
+                #{form @Search.search(), method:'GET' }
+                <input name="q" type="text" class="input-box1" placeholder="search for services" />
                 <input type="text" class="input-box2" placeholder="city or zipcode" />
                 <input name="" type="submit" value="Go" class="input-box3" />
                 #{/form}
