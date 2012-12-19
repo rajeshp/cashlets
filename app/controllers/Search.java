@@ -39,7 +39,7 @@ public class Search extends Controller {
 
         SolrQuery query = new SolrQuery();
 
-        query.setQuery("*:*");
+        query.setQuery("blah");
 
          try
          {
@@ -84,7 +84,7 @@ public class Search extends Controller {
         SolrPingResponse resp = server.ping();
 
         String pingStatusText = HttpStatus.getStatusText(resp.getStatus());
-
+	System.out.println("Pingresponse : "+pingStatusText);
         render();
 
 
