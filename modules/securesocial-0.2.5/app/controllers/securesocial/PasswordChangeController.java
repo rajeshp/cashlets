@@ -1,5 +1,6 @@
 package controllers.securesocial;
 
+import models.User;
 import play.Logger;
 import play.data.validation.Equals;
 import play.data.validation.Required;
@@ -34,6 +35,9 @@ public class PasswordChangeController extends Controller {
                                 @Required String newPassword,
                                 @Required @Equals(message = "securesocial.passwordsMustMatch", value = "newPassword") String confirmPassword) {
         checkAuthenticity();
+
+
+
         if (validation.hasErrors()) {
             tryAgain(newPassword, confirmPassword);
         }
@@ -53,8 +57,18 @@ public class PasswordChangeController extends Controller {
 
         user.password = SecureSocialPasswordHasher.passwordHash(newPassword);
 
+        System.out.println("Inside password change controller before saving updated user obj**********");
         try {
-            UserService.save(user);
+            //UserService.save(user);
+
+            User dbUser = User.findById(user.email);
+
+            dbUser.details = user;
+
+            dbUser.save();
+
+
+            System.out.println("After saving user obj**********************");
         } catch (Throwable e) {
             Logger.error(e, "Error while invoking UserService.save()");
             flash.error(Messages.get(SECURESOCIAL_ERROR_CHANGING_PASSWORD));

@@ -165,15 +165,31 @@ public class ServiceController extends Controller {
 
         SocialUser currentUser = SecureSocial.getCurrentUser();
 
-        if(currentUser.id.equals(service.createdBy))
+        if(currentUser.email.equals(service.createdBy))
         {
+
+            //first delete service pics
+
+            List<String> photos = service.photos ;
+
+            for(String photo : photos)
+            {
+                Photo.findById(photo).delete();
+            }
+
+
             service.delete();
             System.out.println("Deleted Service id: "+id) ;
+
+            //delete Service pics
+
+
 
         }
         else
         {
-            unauthorized();
+           // unauthorized();
+            forbidden();
         }
 
 
