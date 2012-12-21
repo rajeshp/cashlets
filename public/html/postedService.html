@@ -1,9 +1,12 @@
 <div id="inf-table" class="line">
 
 
+             <div id="messagearea" style="height: 50px">
 
 
+             </div>
 
+             <br> <br>
 
                             <table id="orders-table" class="orders-table">
                     <thead>
@@ -28,7 +31,7 @@
 
                     #{list userServices ,as:'service' }
 
-                            <tr class="fk-inf-scroll-item order-item-row ">
+                            <tr class="fk-inf-scroll-item order-item-row " id="servicerow_${service.id}">
                                 <td width="15%" class="order-id">
                                     <a href="#">${service.createdOnDate.format()}</a>
 
@@ -38,7 +41,7 @@
                                     <table width="100%" class="order-item-table">
                                         <tbody>
                                                                                         <tr class="last">
-                                                <td width="40%" title="">${service.name}</td>
+                                                <td width="40%" title="" id="service_name">${service.name}</td>
                                                 <td width="15%">${service.price}</td>
                                                 <td width="45%">${service.description}</td>
                                             </tr>
@@ -49,7 +52,7 @@
                                 <td width="10%" class="order-utils">
                                    
                                     <a href="@{ServiceController.editService()}&id='${service.id}'">Edit</a> &nbsp;
-                                    <a href="#">Delete</a>
+                                    <a href="#" id="deleteService" onclick="deleteService(${service.id})">Delete</a>
                                 </td>
                             </tr>
 

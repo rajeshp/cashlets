@@ -45,7 +45,14 @@
          no query
     #{/if}
     #{else}
-            Search Results for   ${params.get("q") }
+            #{if solrdocs.size()>0}
+                Search Results for   ${params.get("q") }
+            #{/if}
+            #{else}
+                No Results found for  ${params.get("q") }
+            #{/else}
+
+
 
     #{/else}
 
@@ -66,12 +73,7 @@
 
     <div class="main-content2" style="padding-left: 50px">
 
-    %{
 
-
-
-
-        }%
 
 
 
@@ -118,6 +120,11 @@
         </div>
 
     #{/list}
+
+
+
+
+
 
     </div>
 

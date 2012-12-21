@@ -15,7 +15,12 @@ GET  /login                                  securesocial.SecureSocial.login
 GET  /showUserProfile                            UserController.showUserProfile
 GET  /userProfile                            UserController.userProfile
 GET  /editProfile                            UserController.editProfile
+
+
 GET  /serviceDetails                         ServiceController.serviceDetails
+
+POST /deleteservice/{id}                         ServiceController.deleteService
+
 
 #POST    /addService                               ServiceController.AddService
 

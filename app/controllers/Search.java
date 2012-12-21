@@ -15,6 +15,7 @@ import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.SolrException;
 import org.apache.solr.common.SolrInputDocument;
 import play.Logger;
+import play.Play;
 import play.mvc.Controller;
 import utils.SolrServerFactory;
 
@@ -58,8 +59,7 @@ public class Search extends Controller {
 
              SolrDocumentList solrdocs = qresponse.getResults();
 
-             SolrDocument solrdoc = solrdocs.get(0);
-
+           //  System.out.println("got reponse....");
 
 
              /*for(SolrDocument doc : solrdocs)
@@ -147,6 +147,19 @@ public class Search extends Controller {
 
 
         return obj;
+    }
+
+
+
+
+    public static void filterPriceRange()
+    {
+        String solServerUrl = Play.configuration.getProperty("solr.server.url");
+
+
+        System.out.println("Solr Server URL : "+solServerUrl);
+
+
     }
 
 }

@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 import models.Photo;
+import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.common.SolrInputDocument;
 import play.Logger;
 import play.libs.MimeTypes;
 import play.modules.morphia.Blob;
@@ -14,8 +16,10 @@ import play.mvc.Controller;
 import play.mvc.With;
 
 import models.Service;
+import play.utils.Properties;
 import securesocial.provider.SocialUser;
 import controllers.securesocial.SecureSocial;
+import utils.SolrServerFactory;
 
 @With(SecureSocial.class)
 
@@ -91,6 +95,35 @@ public class ServiceController extends Controller {
         //saving the service in collection
         newService.save();
 
+
+        //add to solr index
+
+            try
+            {
+
+            SolrServer server = SolrServerFactory.getServer("http://localhost:8080/solr");
+
+                SolrInputDocument doc = new SolrInputDocument();
+
+                doc.setField("id",newService.getId());
+                doc.setField("name",title);
+                doc.setField("description", description);
+                doc.setField("refURL",refURL);
+                doc.setField("price",price);
+                doc.setField("zipcode",zipcode);
+
+                server.add(doc);
+                server.commit();
+
+
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+
+
+
         render("/public/html/index.html");
 
         }
@@ -121,7 +154,29 @@ public class ServiceController extends Controller {
 
     public static void deleteService(String id)
     {
-        Service.q().filter("_id",id).delete();
+       // Service.q().filter("_id",id).delete();
+
+
+
+        Service service = Service.findById(id);
+
+        //check if the currentUser is allowed to delete the service.
+
+
+        SocialUser currentUser = SecureSocial.getCurrentUser();
+
+        if(currentUser.id.equals(service.createdBy))
+        {
+            service.delete();
+            System.out.println("Deleted Service id: "+id) ;
+
+        }
+        else
+        {
+            unauthorized();
+        }
+
+
 
     }
 

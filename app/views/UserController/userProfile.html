@@ -12,6 +12,47 @@
 </script>
 
 
+<script language="javascript">
+
+
+    $(document).ready(function () {
+
+      // alert("page load");
+
+
+
+
+
+    })  ;
+
+
+    function deleteService(id)
+    {
+        //alert("service id :"+id);
+
+        if(confirm("Are you Sure you want to remove this service?"))
+        {
+
+            var service_title =  $("#servicerow_"+id).find('#service_name').text();
+
+            $("#servicerow_"+id).remove();
+            $("#messagearea").html("<div id='deleteMessage' >"+service_title+" Removed..");
+            $('#deleteMessage').fadeOut(4000);
+
+            $.post('/deleteservice/'+id);
+
+
+
+        }
+
+
+
+    }
+
+
+</script>
+
+
 <style>
 
 
@@ -82,7 +123,15 @@
     width: 21px;
 }
 
+ #messagearea
+ {
+     color : #3BB0D7;
+     font-weight: lighter;
+     font-size:18px;
+     font-family: "Arial";
 
+
+ }
 
 </style>
 
