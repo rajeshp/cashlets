@@ -101,9 +101,11 @@ public class ServiceController extends Controller {
             try
             {
 
-            SolrServer server = SolrServerFactory.getServer("http://localhost:8080/solr");
 
-                SolrInputDocument doc = new SolrInputDocument();
+//            SolrServer server = SolrServerFactory.getServer("http://localhost:8080/solr");
+            SolrServer server = SolrServerFactory.getServer("http://54.243.138.91:8080/solr/");
+            
+    SolrInputDocument doc = new SolrInputDocument();
 
                 doc.setField("id",newService.getId());
                 doc.setField("name",title);
