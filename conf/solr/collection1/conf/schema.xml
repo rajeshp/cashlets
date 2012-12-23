@@ -420,6 +420,19 @@
         <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
+
+        <!-- changes for enabling wildcard seacrch -->
+        <analyzer type="index">
+            <tokenizer class="solr.NGramTokenizerFactory" minGramSize="3" maxGramSize="15" />
+            <filter class="solr.LowerCaseFilterFactory"/>
+        </analyzer>
+        <analyzer type="query">
+            <tokenizer class="solr.WhitespaceTokenizerFactory" />
+            <filter class="solr.LowerCaseFilterFactory"/>
+        </analyzer>
+
+        <!-- till here -->
+
     </fieldType>
 
     <!-- A text field with defaults appropriate for English: it

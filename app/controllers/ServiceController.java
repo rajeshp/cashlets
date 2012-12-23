@@ -155,35 +155,28 @@ public class ServiceController extends Controller {
     public static void deleteService(String id)
     {
        // Service.q().filter("_id",id).delete();
-
-
-
+        Logger.info("Inside delete service");
         Service service = Service.findById(id);
 
         //check if the currentUser is allowed to delete the service.
-
-
-        SocialUser currentUser = SecureSocial.getCurrentUser();
+            SocialUser currentUser = SecureSocial.getCurrentUser();
 
         if(currentUser.email.equals(service.createdBy))
         {
-
             //first delete service pics
+            List<String> photos = null;
+            if(service.photos!=null)
+            {   photos = service.photos ;
 
-            List<String> photos = service.photos ;
+                for(String photo : photos)
+                {
+                    Photo.findById(photo).delete();
+                }
 
-            for(String photo : photos)
-            {
-                Photo.findById(photo).delete();
             }
-
-
+            //delete the service
             service.delete();
-            System.out.println("Deleted Service id: "+id) ;
-
-            //delete Service pics
-
-
+            Logger.info("Deleted Service id: "+id) ;
 
         }
         else
@@ -191,9 +184,6 @@ public class ServiceController extends Controller {
            // unauthorized();
             forbidden();
         }
-
-
-
     }
 
     public static void updateService(Service service)
@@ -214,8 +204,16 @@ public class ServiceController extends Controller {
 
     public static Service getServiceInfoById(String id)
     {
-       return Service.findById(id) ;
+        return Service.findById(id) ;
     }
 
+
+    public static String getService(String id)
+    {
+        Service service =  Service.findById(id) ;
+        System.out.println("Service Name :"+service.name);
+
+        return service.toString() ;
+    }
 
 }

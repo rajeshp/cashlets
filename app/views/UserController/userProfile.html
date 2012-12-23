@@ -35,11 +35,13 @@
 
             var service_title =  $("#servicerow_"+id).find('#service_name').text();
 
+            $.post('/deleteservice/'+id);
+
             $("#servicerow_"+id).remove();
             $("#messagearea").html("<div id='deleteMessage' >"+service_title+" Removed..");
             $('#deleteMessage').fadeOut(4000);
 
-            $.post('/deleteservice/'+id);
+
 
 
 
