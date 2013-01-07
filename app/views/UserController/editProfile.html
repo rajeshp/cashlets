@@ -102,9 +102,8 @@
 <div class="wrapper">
 <div class="inner2">
 <div class="sidebar">
-<?php
-include 'userTabs.php' ;
-?>
+#{include '/public/html/userTabs.html' /}
+
 </div>
 
 
@@ -117,22 +116,33 @@ include 'userTabs.php' ;
 		<h3>Edit Profile</h3>
 		<a id="fb_big_blank" class="btn right blue" href="#">Connect Account to Facebook »</a>
 	</div>
-		<form novalidate="novalidate" method="post" id="update_profile" class="edit_user" action="#" accept-charset="UTF-8">
+		<form novalidate="novalidate" method="post" id="update_profile" class="edit_user" action="@{updateProfile()}" accept-charset="UTF-8">
 			
 			<label for="user_first_name">First Name</label>
-			<input type="text" size="30" name="user[first_name]" id="user_first_name" class="required" autofocus="autofocus">
+			<input type="text" size="30" name="user[first_name]" id="user_first_name" class="required" autofocus="autofocus" value="${currentUser.firstName}">
 			<label for="user_last_name">Last Name</label>
-			<input type="text" size="30" name="user[last_name]" id="user_last_name" class="required">
-			<label for="user_email">Email</label>
-			<input type="text" value="sabyasachi.exe@gmail.com" size="30" name="user[email]" id="user_email" class="required email">
+			<input type="text" size="30" name="user[last_name]" id="user_last_name" class="required" value="${currentUser.lastName}">
+			<label for="user_email">Email ** Cannot be changed</label>
+			<input type="text" value="${currentUser.email}" disabled="disabled" size="30" name="user[email]" id="user_email" class="required email">
 			
 			
 			<label for="user_phone">Phone Number</label>
-			<input type="text" size="30" name="user[phone]" id="user_phone_nomber" class="required" autofocus="autofocus">
-			<label for="user_address">Address</label>
-			<input type="text" size="30" name="user[addr]" id="user_addr" class="required" autofocus="autofocus">
+			<input type="text" size="30" value="${currentUser.phone}" name="user[phone]" id="user_phone" class="required" autofocus="autofocus">
 
-			<input type="submit" value="Update My Profile" name="commit" class="btn btn-large btn-primary" style="margin-left:240px">
+            <label for="user_location">City</label>
+            <input type="text" size="30" value="${currentUser.city}" name="user[location]" id="user_location" class="required" autofocus="autofocus">
+
+            <label for="user_dob">Date of Birth (dd/MM/yyyy)</label>
+            %{ java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
+               String dob = sdf.format(currentUser.dob);
+
+            }%
+
+
+            <input type="text" size="30" value="${dob}" name="user[dob]" id="user_dob" class="required" autofocus="autofocus">
+
+
+            <input type="submit" value="Update My Profile" name="commit" class="btn btn-large btn-primary" style="margin-left:240px">
 		</form>
 	</div>
 

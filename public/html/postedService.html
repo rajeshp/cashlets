@@ -51,7 +51,7 @@
                                 </td>
                                 <td width="10%" class="order-utils">
                                    
-                                    <a href="@{ServiceController.editService()}&id=${service.id}" 'editservice_${service.id} >Edit</a> &nbsp;
+                                    <a class="iframe" href="/servicecontroller/editservice?id=${service.id}" id="editService"  >Edit</a> &nbsp;
                                     <a href="#" id="deleteService" onclick="deleteService(${service.id})">Delete</a>
                                 </td>
                             </tr>

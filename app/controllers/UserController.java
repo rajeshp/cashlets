@@ -12,10 +12,12 @@ import com.sun.istack.internal.FinalArrayList;
 
 import controllers.securesocial.SecureSocial;
 import controllers.securesocial.UsernamePasswordController;
+import play.Logger;
 import play.data.validation.Equals;
 import play.data.validation.Required;
 import play.i18n.Messages;
 import play.mvc.Controller;
+import play.mvc.With;
 import securesocial.provider.AuthenticationMethod;
 import securesocial.provider.ProviderType;
 import securesocial.provider.SocialUser;
@@ -31,6 +33,8 @@ import securesocial.utils.SecureSocialPasswordHasher;
  * Time: 9:07 PM
  * To change this template use File | Settings | File Templates.
  */
+@With(SecureSocial.class)
+
 public class UserController extends Controller {
 
 	private static final String emailAlreadyRegistered = "emailAlreadyRegistered";
@@ -119,17 +123,67 @@ public class UserController extends Controller {
 
       SocialUser currentUser =    SecureSocial.getCurrentUser();
 
-        List<Service> userServices = Service.q().filter("createdBy",currentUser.email).asList();
-
-
-        render(userServices);
+        if(SecureSocial.isUserLoggedIn())
+        {List<Service> userServices = Service.q().filter("createdBy",currentUser.email).asList();
+            render(userServices);
+        }
+        else
+            render("/login");
     }
 
     public static void editProfile()
     {
-        render();
+        SocialUser currentUser =    SecureSocial.getCurrentUser();
+
+        if(SecureSocial.isUserLoggedIn())
+            render(currentUser);
+        else
+            render("/login");
     }
 
+    public static void updateProfile()
+    {
+        Logger.info("Update Profile**********88");
 
+        if(SecureSocial.isUserLoggedIn())
+        {
+            //get user object
+            User user = User.findById(SecureSocial.getCurrentUser().id);
+
+            String fname = request.params.get("user[first_name]");
+            String lname = request.params.get("user[last_name]");
+            String phone = request.params.get("user[phone]");
+            String city = request.params.get("user[location]");
+            String dob = request.params.get("user[dob]");
+
+            try
+            {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                Date dobDate=null;
+                if(dob!=null)
+                dobDate =  sdf.parse(dob);
+
+                 user.details.firstName=fname;
+                 user.details.lastName=lname;
+                 user.details.phone=phone;
+                 user.details.city=city;
+                 user.details.dob=dobDate;
+                 Logger.info("befoer saving user");
+
+                 user.save();
+                 Logger.info("User Profile Updated :"+user.details.id.id);
+            }
+            catch(Exception pe)
+            {
+                Logger.error("Date Parse Exception :");
+            }
+
+            redirect("/showUserProfile");
+        }
+        else
+        {
+            render("/login");
+        }
+    }
 
 }

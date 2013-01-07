@@ -2,12 +2,14 @@ package controllers;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import models.Photo;
 import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.common.SolrInputDocument;
 import play.Logger;
 import play.libs.MimeTypes;
@@ -147,9 +149,15 @@ public class ServiceController extends Controller {
 
     }
 
-    public static void editService()
+    public static void editService(String id)
     {
-        render();
+        Logger.info("edit service id:"+id);
+        Service service = getServiceInfoById(id);
+
+        if(service!=null)
+        render(service);
+        else
+            error("Http 404 : Page Not Found");
     }
 
     public static void deleteService(String id)
@@ -178,6 +186,25 @@ public class ServiceController extends Controller {
             service.delete();
             Logger.info("Deleted Service id: "+id) ;
 
+            try
+            {
+                //remove from the solr index
+                SolrServer searchServer = SolrServerFactory.getServer();
+                searchServer.deleteById(id);
+                searchServer.commit();
+            }
+            catch(MalformedURLException me)
+            {
+                Logger.error("Solr Server URL Error "+me);
+            }
+            catch(SolrServerException se)
+            {
+                Logger.error("***********Solr Server Server Exception while deleting document *****"+se);
+            }
+            catch(IOException ie)
+            {
+                Logger.error("***********Solr IO Exception while deleting document *****"+ie);
+            }
         }
         else
         {
@@ -186,8 +213,49 @@ public class ServiceController extends Controller {
         }
     }
 
-    public static void updateService(Service service)
+    public static void updateService()
     {
+       Logger.info("Inside Update Service *******************");
+       SocialUser currentUser = SecureSocial.getCurrentUser();
+       String service_id = request.params.get("service[id]");
+       Service service = Service.findById(service_id);
+
+       if(currentUser!=null)
+       {
+        /*if(service==null)
+            Logger.info("service is null");
+        else
+            Logger.info("Got the service "+service.name+"  currentuser="+currentUser+" \n service createdBy="+service.createdBy);
+        */
+        if(service.createdBy.equals(currentUser.email) && service!=null)
+        {
+            Logger.info("User Validated**************8");
+
+           String name  =   request.params.get("service[name]");
+           String desc  =   request.params.get("service[description]");
+           String refUrl=   request.params.get("service[url]");
+           String price =   request.params.get("service[price]");
+           String zipcode=  request.params.get("service[location]");
+           String email =   request.params.get("service[email]");
+           String contact=  request.params.get("service[contact]");
+
+           service.name=name;
+           service.description = desc;
+           service.refURL=refUrl;
+           service.price=Float.parseFloat(price);
+           service.zipcode=zipcode;
+           service.email=email;
+           service.phoneno=contact;
+
+           service.save();
+           Logger.info("Updated Service"+service_id);
+        }
+
+       }else
+       {
+           //unauthorized
+           forbidden();
+       }
 
     }
 

@@ -8,10 +8,28 @@
 
     <link href="/public/stylesheets/application.css" rel="stylesheet" type="text/css" />
 
+    <script src="/public/javscripts/jquery-1.7.2.min.js" type="text/javscript" > </script>
 
-    <script src="/public/javascripts/application.js" type="text/javascript">
+    <script src="/public/javascripts/application.js" type="text/javascript"> </script>
+
+    <script>
+
+
+        $(document).ready(function () {
+
+
+
+        })  ;
+
+
+        function updateService()
+        {
+
+            alert($("#service_name"));
+
+        }
+
     </script>
-
 
     <style>
 
@@ -114,17 +132,23 @@ include 'userTabs.php' ;
             <div class="well">
 
                 <div class="page_title">
-                    <h3>Edit Service </h3>
+                    <h3>Edit Service : ${service.name} </h3>
                 </div>
-                <form  novalidate="novalidate" method="post" id="update_profile" class="edit_user" action="@{ServiceController.updateService}" accept-charset="UTF-8">
-                     <input type="hidden" id="service_id" name="service[id]" />
+                <form   method="post" id="update_profile" class="edit_user" action="@{updateService()}" accept-charset="UTF-8">
+                     <input type="hidden" id="service[id]" name="service[id]" value="${service.id}"/>
+                     <input type="hidden" id="service[createdBy]" name="service[createdBy]" value="${service.createdBy}"/>
                     <table width="100%">
                     <tr >
                         <td width="20%">
                             <label for="service_name">Name</label>
                         </td>
                         <td>
-                            <input type="text" size="30" name="service[name]" id="service_name" class="required" autofocus="autofocus">
+                            #{if service!=null}
+                            <input type="text" size="30" name="service[name]" id="service_name" class="required" autofocus="autofocus" value="${service.name}">
+                            #{/if}
+                            #{else}
+                                <input type="text" size="30" name="service[name]" id="service_name" class="required" autofocus="autofocus">
+                            #{/else}
                         </td>
                     </tr>
 
@@ -133,7 +157,7 @@ include 'userTabs.php' ;
                                 <label for="service_description">Service Description</label>
                             </td>
                             <td>
-                                <textarea rows="10" cols="50" name="service[description]" id="service_description" class="required" > </textarea>
+                                <textarea rows="10" cols="50" name="service[description]" id="service_description" class="required" > ${service.description} </textarea>
                             </td>
                         </tr>
 
@@ -143,7 +167,7 @@ include 'userTabs.php' ;
                                 <label for="service_url">Service URL</label>
                             </td>
                             <td>
-                                <input type="text" size="30" name="service[url]" id="service_url" class="required" autofocus="autofocus">
+                                <input type="text" size="30" name="service[url]" id="service_url" class="required" autofocus="autofocus" value="${service.refURL}">
                             </td>
                         </tr>
 
@@ -152,16 +176,16 @@ include 'userTabs.php' ;
                                 <label for="service_price">Price</label>
                             </td>
                             <td>
-                                <input type="text" size="30" name="service[price]" id="service_price" class="required" autofocus="autofocus">
+                                <input type="text" size="30" name="service[price]" id="service_price" class="required" autofocus="autofocus" value="${service.price}">
                             </td>
                         </tr>
 
                         <tr >
                             <td width="20%">
-                                <label for="service_location">Name</label>
+                                <label for="service_location">ZipCode</label>
                             </td>
                             <td>
-                                <input type="text" size="30" name="service[location]" id="service_location" class="required" autofocus="autofocus">
+                                <input type="text" size="30" name="service[location]" id="service_location" class="required" autofocus="autofocus" value="${service.zipcode}">
                             </td>
                         </tr>
 
@@ -170,7 +194,7 @@ include 'userTabs.php' ;
                                 <label for="service_email">eMail</label>
                             </td>
                             <td>
-                                <input type="text" size="30" name="service[email]" id="service_email" class="required" autofocus="autofocus">
+                                <input type="text" size="30" name="service[email]" id="service_email" class="required" autofocus="autofocus" value="${service.email}">
                             </td>
                         </tr>
 
@@ -179,7 +203,7 @@ include 'userTabs.php' ;
                                 <label for="service_phone">Contact No.</label>
                             </td>
                             <td>
-                                <input type="text" size="30" name="service[name]" id="service_phone" class="required" autofocus="autofocus">
+                                <input type="text" size="30" name="service[contact]" id="service_phone" class="required" autofocus="autofocus" value="${service.phoneno}">
                             </td>
                         </tr>
 
@@ -188,7 +212,7 @@ include 'userTabs.php' ;
 
                     </table>
                     <br>
-                    <input type="submit" value="Update My Profile" name="commit" class="btn btn-large btn-primary" style="margin-left:150px">
+                    <input type="submit" value="Update Service" name="commit" class="btn btn-large btn-primary" style="margin-left:150px">
 
                 </form>
             </div>
