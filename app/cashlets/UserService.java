@@ -91,7 +91,7 @@ public class UserService implements UserServiceDelegate {
 		
 		//save user object
 		
-		suser.isEmailVerified=true;
+		//suser.isEmailVerified=true;
 
 		/*newUser.userid = suser.id.id;
 

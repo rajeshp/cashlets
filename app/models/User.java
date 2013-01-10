@@ -2,6 +2,7 @@ package models;
 
 import java.util.Date;
 
+import play.data.validation.Email;
 import play.libs.OAuth;
 import securesocial.provider.AuthenticationMethod;
 import securesocial.provider.SocialUser;
@@ -23,6 +24,7 @@ import com.google.code.morphia.annotations.Id;
 @Entity
 public class User extends Model{
    @Id
+   @Email
   public  String userid;
   public SocialUser details;
   

@@ -134,7 +134,9 @@
 
             <label for="user_dob">Date of Birth (dd/MM/yyyy)</label>
             %{ java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
-               String dob = sdf.format(currentUser.dob);
+               String dob=null;
+                if(currentUser.dob!=null)
+                    dob = sdf.format(currentUser.dob);
 
             }%
 

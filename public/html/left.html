@@ -1,13 +1,41 @@
+
 <div class="sidebar">
-<div class="block1">
-<h2 class="head">Filter by Price</h2>
-<ul class="menu2">
-<li><a href="#">Below Rs.29 (109)</a></li>
-<li><a href="#">Rs.49 - Rs.99 (150)</a></li>
-<li><a href="#">Rs.99 - Rs.249 (179)</a></li>
-<li><a href="#">Rs.249 - Rs.499 (141)</a></li>
-<li><a href="#">Rs.499 - Rs.999 (128)</a></li>
-</ul>
+<div class="block1" id="priceFacetsBlock">
+
+    <h2 class="head">Filter by Price</h2>
+
+    <ul class="menu2">
+
+     %{
+         String[] facetFieldNames = new String[1];
+         facetFieldNames[0]="price";
+
+
+         Map<Integer,Integer> results = utils.SolrFacetFields.getFacetPriceRangeValues("*:*",facetFieldNames);
+
+         for(int  key : results.keySet())
+         {
+
+         %}
+     <li> <a href="/search?q=price:[*%20TO%20${key}]&q='${params.get("q")}'"> Less than ${key} lakd ${results.get(key)} </a>   </li>
+
+        %{
+
+         }
+
+         }%
+
+         query =  ${params.get("q") }
+
+         #{list priceRanges, as : "rangeItem"}
+             <li><a href="/search?q=${params.get("q") } ">${rangeItem}</a></li>
+
+         #{/list}
+
+
+    </ul>
+
+
 </div>
 <div id="ideas_for_you" style="padding-top:50px" >
 <h3 class="head3">Ideas for You</h3>

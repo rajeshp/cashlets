@@ -8,6 +8,8 @@
 GET  /                                       Router.indexPage
 GET  header.html                             staticFile:/public/html/header.html
 
+
+
 GET  /showAddServicePage                        ServiceController.showAddServicePage
 
 GET  /{page}.html                            Router.route
@@ -41,6 +43,20 @@ GET /search                                   Search.search
 GET  /logout								UserController.logOutUser
 
 GET  /test                                TestController.test
+
+
+
+# Admin requests
+
+#GET /admin/login                                  AdminController.showLoginPage
+
+
+
+#CRUD request
+
+* /admin                                          module:crud
+
+
 
 
 # Ignore favicon requests

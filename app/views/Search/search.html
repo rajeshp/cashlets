@@ -12,10 +12,7 @@
                     .load("/header.html") // load in the file specified
         });
 
-        $(document).ready(function() { // this runs as soon as the page is ready (DOM is loaded)
-            $("#leftsidebar") // selecting "div" (you can also select the element by its id or class like in css )
-                    .load("/left.html") // load in the file specified
-        });
+
 
     </script>
 </head>
@@ -63,6 +60,8 @@
     <div class="inner2">
 
         <div id="leftsidebar" >
+
+            #{include '/public/html/left.html'/}
 
         </div>
 

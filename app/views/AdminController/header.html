@@ -1,0 +1,32 @@
+
+
+<div id="header">
+    <div class="inner">
+
+
+       ${ adminUser}
+
+    #{if (user==null) }
+               <div style="position:absolute; width: 200px; color:#FFF; right:0; top: 5px;"><a href="/login">Already A Member?</a> <a href="sign-up.html"><strong>Sign Up</strong></a></div>
+    #{/if}
+    #{else}
+    <div style="position:absolute; width: 300px; color:#FFF; right:0; top: 5px;"> Hello ${user.firstName} ${user.lastName} &nbsp; &nbsp;
+
+        <a href="/showUserProfile"> Settings </a>
+        &nbsp;
+
+        <a href="/logout" >LogOut</a></div>
+
+
+
+
+
+
+    #{/else}
+      <a href="/"  ><img src="/public/images/logo.gif" width="300" height="79" alt="bb" style="float:left; margin-top:20px; margin-bottom:20px;" /> </a>
+        <div class="search">
+
+
+        </div>
+    </div>
+</div>

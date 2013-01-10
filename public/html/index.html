@@ -16,6 +16,14 @@
             $("#leftsidebar") // selecting "div" (you can also select the element by its id or class like in css )
                     .load("/left.html") // load in the file specified
         });
+
+        $.post('/facetcontroller/getfacets', function(data) {
+
+            //alert(data);
+
+
+
+        });
         
     </script>
 </head>

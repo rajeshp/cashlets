@@ -7,10 +7,12 @@ import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.core.CoreContainer;
 import org.xml.sax.SAXException;
+import play.Play;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.Properties;
 
 
 /**
@@ -25,7 +27,10 @@ public class SolrServerFactory {
     // return solr server from default localhost 8080 port http://localhost:8080/solr/admin
     public static SolrServer getServer() throws MalformedURLException
     {
-        String url = "http://localhost:8080/solr";
+        Properties properties = Play.configuration;
+
+        String url = (String) properties.get("solr.server.url");
+
         return getServer(url) ;
 
     }
