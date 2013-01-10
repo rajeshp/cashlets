@@ -50,10 +50,15 @@ public class FacebookProvider extends OAuth2Provider
         JsonObject error = me.getAsJsonObject(ERROR);
 
         if ( error != null ) {
+            Logger.info("*****FACEBOOK AUTHENTICATION SUCCESSFUL****");
             final String message = error.get(MESSAGE).getAsString();
             final String type = error.get(TYPE).getAsString();
             Logger.error("Error retrieving profile information from Facebook. Error type: %s, message: %s.", type, message);
             throw new AuthenticationException();
+        }
+        else
+        {
+            Logger.error("*****FACEBOOK LOGIN ERROR....*****"+error);
         }
         
         user.id.id = me.get(EMAIL).getAsString();
