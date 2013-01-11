@@ -100,9 +100,9 @@ public class UserService implements UserServiceDelegate {
 		newUser.save();
 		*/
 
-
-
-
+		newUser.userid=suser.id.id;
+		newUser.details=suser;
+		newUser.save();
 		log.info("Saving user id:"+suser.id.id);
 		
 		
