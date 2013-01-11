@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<link href="/public/stylesheets/style.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() { // this runs as soon as the page is ready (DOM is loaded)
+            $("#header_wrapper") // selecting "div" (you can also select the element by its id or class like in css )
+                    .load("/header.html") // load in the file specified
+        });
+        
+        $(document).ready(function() { // this runs as soon as the page is ready (DOM is loaded)
+            $("#leftsidebar") // selecting "div" (you can also select the element by its id or class like in css )
+                    .load("/left.html") // load in the file specified
+        });
+
+        $.post('/facetcontroller/getfacets', function(data) {
+
+            //alert(data);
+
+
+
+        });
+        
+    </script>
+</head>
+
+<body>
+<div id="header_wrapper" class="header_wrapper" align="">
+
+      
+
+</div>
+
+<div class="button">
+<div class="inner2">
+#{if (user==null)}
+<a href="/showAddServicePage"><img src="/public/images/button.jpg" width="229" height="50" alt="cashlets" /></a>
+#{/if}
+#{else}
+<a href="/showAddServicePage"><img src="/public/images/add_new_service2.png" width="180" height="50" alt="cashlets" /></a>
+#{/else}
+
+</div>
+</div>
+<div class="wrapper">
+<div class="inner2">
+
+<div id="leftsidebar" > 
+
+</div>
+
+
+</div>
+
+
+
+<div class="main-content2" style="padding-left: 50px">
+
+
+#{list items:models.Service.findAll(), as:'service'}
+
+   <div id="service_block" style="padding-left: 0px">
+
+    <!-- <a href="#"><img src="/public/images/thumbnail.jpg" width="86" height="73" alt="ds" style="float:left; margin-right:20px; margin-top:5px;" /></a> -->
+
+
+       #{if (service.getPhotos()==null) }
+           <a href="/serviceDetails?id=${service.id}"> <img src="/public/images/thumbnail.jpg" width="86" height="73" alt="ds" style="float:left; margin-right:20px; margin-top:5px;" />     </a>
+       #{/if}
+       #{else}
+           <a href="/serviceDetails?id=${service.id}"> <img src="@{Application.getPhoto(service.getPhotos().get(0))}" width="86" height="73" alt="ds" style="float:left; margin-right:20px; margin-top:5px;" /> </a>
+       #{/else}
+
+
+
+       <h2><a href="/serviceDetails?id=${service.id}"> ${service.name} </a></h2>
+
+       <p>${service.description}</p>
+
+    <div style="float:left; width:200px;">
+        <img src="/public/images/star.jpg" width="17" height="20" alt="dsa" />
+        <img src="/public/images/star.jpg" width="17" height="20" alt="dsa" />
+        <img src="/public/images/star.jpg" width="17" height="20" alt="dsa" />
+        <img src="/public/images/star.jpg" width="17" height="20" alt="dsa" />
+        <img src="/public/images/star2.jpg" width="17" height="20" alt="dsa" />
+    </div>
+    <div style="float:right; width:20px;">
+        <a href="#"><img src="/public/images/read-more.jpg" width="12" height="16" alt="dsaf" /></a></div>
+    <div class="clear"></div>
+
+   </div>
+
+    #{/list}
+
+</div>
+
+
+
+
+<div class="clear"></div><div class="push"></div>
+<div class="footer">
+<div class="inner">
+<p style="padding-bottom:5px;"><a href="about-us.html">About</a>   &nbsp;&nbsp; ::  &nbsp;&nbsp;  <a href="cashlets.html">Cashlets</a>    &nbsp;&nbsp;  ::   &nbsp;&nbsp;  <a href="how-it-works.html">How it Works</a>     &nbsp;&nbsp;  ::    &nbsp;&nbsp;  <a href="privacy-policy.html">Privacy & Terms</a>  </p>
+<p style="font-size:13px;">Copyright Cashlets. All Right Reserved.</p>
+</div>
+</div>
+</body>
+</html>
