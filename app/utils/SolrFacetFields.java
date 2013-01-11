@@ -123,25 +123,27 @@ public class SolrFacetFields {
             {
 
                 List<FacetField.Count> list = f.getValues();
-                FacetField.Count fc = list.get(0);
-                List<FacetField.Count> priceRangeList = fc.getFacetField().getValues();
+		if(list.size()>0)
+		{
+			FacetField.Count fc = list.get(0);
+			List<FacetField.Count> priceRangeList = fc.getFacetField().getValues();
 
-                for(FacetField.Count price : priceRangeList)
-                {
-                    String priceName = price.getName();
-                    String priceField = price.toString();
+			for(FacetField.Count price : priceRangeList)
+			{
+			    String priceName = price.getName();
+			    String priceField = price.toString();
 
 
 
-                    float hprice = Float.parseFloat(priceName)+1;
-                    int a = (int) hprice;
-                    int b =(int) price.getCount();
-                    facetResults.put(a,b);
+			    float hprice = Float.parseFloat(priceName)+1;
+			    int a = (int) hprice;
+			    int b =(int) price.getCount();
+			    facetResults.put(a,b);
 
-                }
+			}
 
-            }
-
+		  }
+		}
         }
         catch(SolrServerException se)
         {
