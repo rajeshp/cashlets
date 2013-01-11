@@ -38,8 +38,8 @@ public class FacetController extends Controller {
         List<FacetField> facetFieldList =null;
 
         try
-        {   String url = "http://localhost:8080/solr";
-            SolrServer server = SolrServerFactory.getServer(url);
+        {
+            SolrServer server = SolrServerFactory.getServer();
 
             SolrQuery query = new SolrQuery();
             query.setQuery("*:*");
